@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="60" height="10" tilewidth="16" tileheight="16" infinite="0" backgroundcolor="#000000" nextlayerid="3" nextobjectid="1">
+ <tileset firstgid="1" name="megacommando.png" tilewidth="16" tileheight="16" tilecount="5120" columns="64">
+  <image source="../../../../tiles/Tileset/Skorpio's Pack/megacommando.png" width="1024" height="1280"/>
+ </tileset>
+ <tileset firstgid="5121" name="Objects.png" tilewidth="16" tileheight="16" tilecount="256" columns="16">
+  <image source="../../../../tiles/Tileset/Skorpio's Pack/Objects.png" width="256" height="256"/>
+ </tileset>
+ <tileset firstgid="5377" source="megacommando.tsx"/>
+ <layer id="1" name="Capa de Patrones 1" width="60" height="10">
+  <data encoding="base64" compression="zlib">
+   eJzF1U1PE0Ecx/HxUmLCdrvdUg6ChvL4AggEeQEGbogYKVcSuQoSgUC48HjhKmgCR3wLQgxHLQpHeQhQARN4DYDgd9LddHeYbbeYyOGTzNDZmfnN/md5FRWiF2k0P/R7ZApRhWo8dqxoxr0vF2IRS/hQfvt3VbXBXMg8yCk2/oA5D3GEbIj5J83g33pNvTT6NM9lPXmPaZ9ghz3sYg/7mv1kmeeXZ65lstaY4fO6z3j7r+kPGPqxG8q+IwkhyhK59irPfAp4TueJGbzmUgnzSGGzSifx0ub2SpK10sl7xh7PA/bpvr8w66pj6ywh6i3/GPVvpeT9Fw1kbQzxfmXNpZTaSNnhx96ntZgQ67Fcu4WsrSHe7/+wUOD702nk74zurha6wxdkvcQV/uAaN2ikBpvwU353NN/eUtZ4FhGiI1J8Drf21buiZu2843to4848Rbtzd96RcyTmH5OkFis99dhCu1VTn0F120Gdl1l5Fv04bCRQgaTtn0M3z1fe9zdksInv+IGtEP+HvFll+4uVP9tT/MYb228QQ3iLYYxyxmNFzllmnVfudRf95+jGC/TgZcDdV20bhftBRsg36vkeyrzu2daiDlOxwj6z1hqm7LxpzGAWc07WjCbLx7g/r+yfccbn6Df0ZB1Eo/66kP0Kpz3OnifM3LpBbZfM6+1LfwFUndNK
+  </data>
+ </layer>
+</map>
