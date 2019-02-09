@@ -34,6 +34,7 @@ public class TileMap {
     int ancho;
     int alto;
     
+    
     //pintar mapa: desplazamiento
     int filaOffset;
     int columnaOffset;
@@ -52,8 +53,8 @@ public class TileMap {
 
     public TileMap(int tcelda) {
         this.tamanio_celda=tcelda;
-        this.num_filas_pintado=PanelJuego.HEIGHT/tamanio_celda;
-        this.num_columnas_pintado=PanelJuego.WIDTH/tamanio_celda;
+        this.num_filas_pintado=(int)PanelJuego.HEIGHT/tamanio_celda;
+        this.num_columnas_pintado=(int)(PanelJuego.WIDTH/tamanio_celda)+3;
         this.tween=0.5;
     }
     
@@ -86,14 +87,24 @@ public class TileMap {
        InputStreamReader entrada=new InputStreamReader(this.getClass().getResourceAsStream(nombre));
        BufferedReader br=new BufferedReader(entrada);
        this.num_map_columnas=Integer.parseInt(br.readLine());
+       
        System.out.println("num map columnas"+this.num_map_columnas);
        this.num_map_filas=Integer.parseInt(br.readLine());
        System.out.println("num map filas"+this.num_map_filas);
+       
+       ancho = this.num_filas_pintado*tamanio_celda;
+       alto = this.num_columnas_pintado * tamanio_celda;
+       
        this.map=new int[num_map_filas][num_map_columnas];
        
-       for(int i=0;i<this.num_map_filas;i++){
-           String[] split=br.readLine().split(",");
-           System.out.println();
+        xmin = 0;
+        xmax = PanelJuego.WIDTH-ancho;
+        ymin = 0;
+        ymax = PanelJuego.HEIGHT - alto;
+        
+        for(int i=0;i<this.num_map_filas;i++){
+            String[] split=br.readLine().split(",");
+            System.out.println();
             for(int j=0;j<this.num_map_columnas;j++){                
                 int celda=Integer.parseInt(split[j]); 
                 System.out.print(celda);
@@ -103,13 +114,16 @@ public class TileMap {
     }
     
     public void setPosicion(double x,double y){
-        this.x=(x-this.x)*tween;
-        this.y=(y-this.y)*tween;
+        this.x+=(x-this.x)*tween;
+        this.y+=(y-this.y)*tween;
         this.ajustarArea();
         this.columnaOffset=(int) (-this.x/tamanio_celda);
-        this.filaOffset=(int) (-this.y/tamanio_celda);  
+        this.filaOffset=(int) (-this.y/tamanio_celda);
+        System.out.println("Se ha lamado al metodo");
     }
-    
+
+        
+        
     public void ajustarArea(){
         if(x<xmin){x=xmin;}
         if(x<xmax){x=xmax;}
@@ -118,13 +132,19 @@ public class TileMap {
     }
     
     public void draw(Graphics2D g2d){
+        
+        System.out.println("filaOffset->"+this.filaOffset);
+        System.out.println("num_filas_pintado"+this.num_filas_pintado);
+        System.out.println("columnaOffset->"+this.columnaOffset);
+        System.out.println("num_columnas_pintado"+this.num_columnas_pintado);
+        
         for(int fila=this.filaOffset;fila<this.filaOffset+this.num_map_filas;fila++){
             for(int col=this.columnaOffset;col<this.columnaOffset+this.num_map_columnas;col++){            
                 int valor=map[fila][col];
                 int fila_fila=(int)(valor/this.num_tile_filas);
                 int fila_col=(int)(valor%this.num_tile_columnas)-1;                
                 if(fila_col>=0){ 
-                    g2d.drawImage(tiles[fila_fila][fila_col].getImage(),(int)this.x+col*tamanio_celda , (int)this.y+fila*tamanio_celda ,null );
+                    g2d.drawImage(tiles[fila_fila][fila_col].getImage(),(int)(this.x+col)*tamanio_celda , (int)(this.y+fila)*tamanio_celda ,null );
                 }
             }
         }

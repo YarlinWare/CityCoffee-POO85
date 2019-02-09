@@ -65,7 +65,7 @@ public class Tile {
     }
     
     public int asignarTipo(int contador){
-        int result=normal;
+        int result=Tile.normal;
         for(int c:this.VectorBlockInt){
             if(c==contador){
                 result=Tile.colision;

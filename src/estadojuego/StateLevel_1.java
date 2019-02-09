@@ -36,7 +36,7 @@ public class StateLevel_1 extends EstadoJuego{
         try {            
             tilemap=new TileMap(32);/*
             tilemap.cargarTiles("..\\Assets\\Tileset\\ciudad_ai.png");
-            tilemap.cargarMapa("..\\Assets\\maps\\level_5.txt");   */   
+            tilemap.cargarMapa("..\\Assets\\maps\\level_5.txt");  */   
             tilemap.cargarTiles("..\\Assets\\Tileset\\prueba.png");
             tilemap.cargarMapa("..\\Assets\\maps\\level_4.txt");  
         } catch (IOException ex) {

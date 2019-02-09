@@ -64,6 +64,12 @@ public abstract class MapObject {
     //caja colisiones
    int colliderwidth;
    int  colliderheight;
+   
+   //Animación
+   AnimacionPersonaje animacion;
+   int animacionActual;
+   int animacionPrev;
+   boolean mirarderecha;
     
     public MapObject(TileMap tm){
         this.tilemap=tm;
