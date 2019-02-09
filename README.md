@@ -1,3 +1,4 @@
+![](https://github.com/YarlinWare/CityCoffee-POO85/blob/Pruebas/src/images/Logo.jpg)
 # City:Coffee
 ## Proyecto Final POO-G85
 
@@ -14,11 +15,15 @@
 	  `protagonista.avanzar( pasos)`
     * Método para atacar:
 	  `protagonista.atacar( )`
-    
-![]
-(http://s3-ap-northeast-1.amazonaws.com/bc2prod/rpgmaker-20130522223546811/files/modern-day-tiles-left.png)	
+	  
+> Fondo ciudad level 1.
+![](https://github.com/YarlinWare/CityCoffee-POO85/blob/Pruebas/src/Assets/Tileset/level_5.png)
 
-> Fondo ciudad.
+> Fondo ciudad level 2.
+![](https://github.com/YarlinWare/CityCoffee-POO85/blob/Pruebas/src/Assets/Tileset/Level2.png)
+
+> Fondo ciudad level 3.
+![](https://github.com/YarlinWare/CityCoffee-POO85/blob/Pruebas/src/Assets/Tileset/level_4.png)
 
 Niveles: 
 - En el nivel 0 encontraremos la parte inicial del juego, en el cual el jugador definirá las características del personaje con el cual va a jugar durante los niveles posteriores, incluyendo temas como crear una variable de objeto, etc.
@@ -29,10 +34,9 @@ Proyecto final de Programación Orientada a Objetos [G85], de la Universidad Dis
 
 
 #### Miembros Grupo:
-Juan Felipe Herrera P. 20181020077
-Cristhian M. Yara P. 20171020088
+- Juan Felipe Herrera P. 20181020077
+- Cristhian M. Yara P. 20171020088
 
 #### Algunas herramientas utilizadas:
-www.piskelapp.com
-gaurav.munjal.us
-
+- www.piskelapp.com
+- gaurav.munjal.us
