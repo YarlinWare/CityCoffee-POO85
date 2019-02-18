@@ -26,7 +26,7 @@ public class StateLevel_1 extends EstadoJuego{
     private TileMap tilemap;
     private Player player;
     
-    static String nombre_jugador;
+    public static String nombre_jugador;
     BackGround bg;
     
     public StateLevel_1(ManagerEstados ms){
@@ -60,7 +60,7 @@ public class StateLevel_1 extends EstadoJuego{
     @Override
     public void update() {
         tilemap.setPosicion(PanelJuego.WIDTH / 2 - player.getX(),PanelJuego.HEIGHT / 2 - player.getY());
-        player.update();
+       // player.update();
     }
     
     public static void pedir_nombre()

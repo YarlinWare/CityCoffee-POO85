@@ -15,6 +15,7 @@ import javafx.scene.layout.Background;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
+
 /**
  *
  * @author 
@@ -68,11 +69,11 @@ public class EstadoMenu extends EstadoJuego{
     @Override
     public void update() {
         bg.update();
+        
     }
     
     public void seleccionar(){
         if(this.opcionactual==0){
-            StateLevel_1.pedir_nombre();
             this.ms.setEstadoactual(ms.LEVEL1);
             System.out.println("Level");
         }

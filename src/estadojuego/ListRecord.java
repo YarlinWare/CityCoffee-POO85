@@ -11,8 +11,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
-import java.io.IOException;
+import java.io.*;
 import javax.swing.ImageIcon;
+import Archivos.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -52,17 +55,48 @@ public class ListRecord extends EstadoJuego{
         g2d.setFont(font);
         g2d.setColor(Color.WHITE);
         
-        g2d.drawString("Jugador 1", 150, 40);
-        g2d.drawString("Jugador 2", 150, 60);
-        g2d.drawString("Jugador 3", 150, 80);
-        g2d.drawString("Jugador 4", 150, 100);
-        g2d.drawString("Jugador 5", 150, 120);
+        records.crea_archivo("", "records.txt");
+        records.modifica_archivo("records.txt");
         
-        g2d.drawString("9999999", 250, 40);
-        g2d.drawString("9999999", 250, 60);
-        g2d.drawString("9999999", 250, 80);
-        g2d.drawString("9999999", 250, 100);
-        g2d.drawString("9999999", 250, 120);
+        int ynombre, ypuntaje, contador;
+        ynombre=40;
+        ypuntaje=40;
+        contador=0;
+        String cadena;
+        FileReader f = null;
+        try {
+            f = new FileReader("records.txt");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(ListRecord.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        BufferedReader b = new BufferedReader(f);
+        try {
+            while((cadena = b.readLine())!=null) {
+               
+                contador++;
+                if(contador%2==0)
+                {
+                    g2d.drawString(cadena,250,ypuntaje);
+                    ypuntaje=ypuntaje+20;
+                }   
+                else
+                {
+                    g2d.drawString(cadena,150,ynombre);   
+                    ynombre=ynombre+20;
+                }
+                if(contador>=10)
+                    break;
+                
+            }
+        } catch (IOException ex) {
+            Logger.getLogger(ListRecord.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            b.close();
+        } catch (IOException ex) {
+            Logger.getLogger(ListRecord.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         
         
         for(int i=0;i<this.lopciones.length;i++){

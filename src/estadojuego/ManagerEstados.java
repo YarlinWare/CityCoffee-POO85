@@ -24,7 +24,7 @@ public class ManagerEstados {
 
     public ManagerEstados() throws IOException {
         this.estadosJuego=new ArrayList<EstadoJuego>();
-        this.estadoactual=LEVEL1;
+        this.estadoactual=MENU;
         EstadoMenu menu=new EstadoMenu(this);
         this.estadosJuego.add(menu);
         StateLevel_1 level1=new StateLevel_1(this);
