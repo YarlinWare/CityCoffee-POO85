@@ -116,10 +116,9 @@ public class TileMap {
     public void setPosicion(double x,double y){
         this.x+=(x-this.x)*tween;
         this.y+=(y-this.y)*tween;
-        this.ajustarArea();
+        ajustarArea();
         this.columnaOffset=(int) (-this.x/tamanio_celda);
         this.filaOffset=(int) (-this.y/tamanio_celda);
-        System.out.println("Se ha lamado al metodo");
     }
 
         
@@ -139,13 +138,20 @@ public class TileMap {
         System.out.println("num_columnas_pintado"+this.num_columnas_pintado);
         
         for(int fila=this.filaOffset;fila<this.filaOffset+this.num_map_filas;fila++){
+            if (fila>=num_map_filas) break;
             for(int col=this.columnaOffset;col<this.columnaOffset+this.num_map_columnas;col++){            
+                if (col>=num_map_columnas) break;
                 int valor=map[fila][col];
                 int fila_fila=(int)(valor/this.num_tile_filas);
-                int fila_col=(int)(valor%this.num_tile_columnas)-1;                
-                if(fila_col>=0){ 
-                    g2d.drawImage(tiles[fila_fila][fila_col].getImage(),(int)(this.x+col)*tamanio_celda , (int)(this.y+fila)*tamanio_celda ,null );
-                }
+                int fila_col=(int)(valor%this.num_tile_columnas-1);                
+                //if(fila_col>=0){ 
+                    g2d.drawImage(
+                        tiles[fila_fila][fila_col].getImage(),
+                        (int)(this.x+col)*tamanio_celda , 
+                        (int)(this.y+fila)*tamanio_celda ,
+                        null 
+                    );
+                //}
             }
         }
     }   
@@ -321,16 +327,18 @@ public class TileMap {
     public double getTween() {
         return tween;
     }
-
+    /*
     public void setTween(double tween) {
         this.tween = tween;
-    }
+    }*/
+    public void setTween(double d) { tween = d; }
     
     public int getTipo(int x,int y){
         int valor=map[x][y];
         int ffila=(int)(valor/this.num_tile_filas);
-        int fcol=(int)(valor%this.num_tile_columnas)-1;  
+        int fcol=(int)(valor%this.num_tile_columnas-1);  
         return tiles[ffila][fcol].getType();
+        
     }
     
 }

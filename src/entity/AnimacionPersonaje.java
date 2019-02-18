@@ -30,13 +30,16 @@ public class AnimacionPersonaje {
     }
     
      public void update(){
-       if(delay==-1) return;
+        // delay==-1 no se ejecuta animacion
+        if(delay==-1) return;
+            
             long elapsed=System.nanoTime()-tiempoStart;
             if(delay<elapsed){
                 AnimacionActual++;
                 tiempoStart=System.nanoTime();
                 
             }
+            //si se completa la animacion
             if(AnimacionActual==frames.length){
                 AnimacionActual=0;
                 completada=true;
@@ -83,6 +86,8 @@ public class AnimacionPersonaje {
     public void setTiempoStart(long tiempoStart) {
         this.tiempoStart = tiempoStart;
     }
-     
+    public BufferedImage getImagen(){
+        return this.frames[this.AnimacionActual];
+    }
      
 }
