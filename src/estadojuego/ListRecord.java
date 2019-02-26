@@ -56,7 +56,11 @@ public class ListRecord extends EstadoJuego{
         g2d.setColor(Color.WHITE);
         
         records.crea_archivo("", "records.txt");
-        records.modifica_archivo("records.txt");
+        try {
+            records.modifica_archivo("records.txt");
+        } catch (IOException ex) {
+            Logger.getLogger(ListRecord.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         int ynombre, ypuntaje, contador;
         ynombre=40;

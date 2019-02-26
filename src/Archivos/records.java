@@ -18,22 +18,23 @@ public class records {
         }
         return result;
         }
-     public static void modifica_archivo(String path){
-            FileWriter fichero = null;
-            PrintWriter pw = null;
+     public static void modifica_archivo(String path) throws IOException{
+            FileWriter fw = null;
+            BufferedWriter bw = null;
+            PrintWriter out = null;
             try
             {
-                fichero = new FileWriter(path);
-                pw = new PrintWriter(fichero);
-            //LLENA EL ARCHIVO
-            pw.append(StateLevel_1.nombre_jugador);
-
+                fw = new FileWriter(path,true);
+                bw = new BufferedWriter(fw);
+                out = new PrintWriter(bw);
+                //LLENA EL ARCHIVO
+                out.println(StateLevel_1.nombre_jugador);
             } catch (Exception e) {
                 e.printStackTrace();
             } finally {
                try {
-               if (null != fichero)
-                  fichero.close();
+               if (null != fw)
+                  fw.close();
                } catch (Exception e2) {
                   e2.printStackTrace();
                }
