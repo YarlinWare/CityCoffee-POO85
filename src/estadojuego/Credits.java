@@ -26,7 +26,7 @@ public class Credits extends EstadoJuego {
 
     public Credits(ManagerEstados ms) throws IOException  {
        this.ms=ms;
-       bg=new BackGround("..\\Assets\\Background\\Fondo.gif",1.0);
+       bg=new BackGround("/Assets/Background/Fondo.gif",1.0);
        bg.setPosition(0, 0);
        bg.setVector(0, 0.08);
        this.iniciar();
@@ -45,7 +45,7 @@ public class Credits extends EstadoJuego {
         
         /*ImageIcon Img = new ImageIcon(getClass().getResource("..\\images\\Logo2.png"));
         g2d.drawImage(Img.getImage(), 25, 5, 115, 65, null);  */ 
-        ImageIcon Img2 = new ImageIcon(getClass().getResource("..\\images\\edificios.png"));
+        ImageIcon Img2 = new ImageIcon(getClass().getResource("/images/edificios.png"));
         g2d.drawImage(Img2.getImage(), -100, 0, 320, 240, null);
         
         

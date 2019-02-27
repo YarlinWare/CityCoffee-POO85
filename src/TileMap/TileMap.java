@@ -11,6 +11,10 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import javax.imageio.ImageIO;
 
+/**
+ *
+ * @author 
+ */
 public class TileMap {
     //posicion del mapa
     private double x;

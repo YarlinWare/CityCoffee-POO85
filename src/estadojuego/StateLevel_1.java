@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package estadojuego;
 
 import TileMap.BackGround;
@@ -13,6 +18,10 @@ import java.util.logging.Level;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
+/**
+ *
+ * @author Rapter
+ */
 public class StateLevel_1 extends EstadoJuego{
     private TileMap tilemap;
     private Player player;
@@ -31,8 +40,8 @@ public class StateLevel_1 extends EstadoJuego{
             tilemap=new TileMap(32);/*
             tilemap.cargarTiles("..\\Assets\\Tileset\\ciudad_ai.png");
             tilemap.cargarMapa("..\\Assets\\maps\\level_5.txt");  */   
-            tilemap.cargarTiles("..\\Assets\\Tileset\\prueba.png");
-            tilemap.cargarMapa("..\\Assets\\maps\\level_4.txt");
+            tilemap.cargarTiles("/Assets/Tileset/prueba.png");
+            tilemap.cargarMapa("/Assets/maps/level_4.txt");
             player = new Player(tilemap);
             player.setPosition(50, 50);
         } catch (IOException ex) {
@@ -56,7 +65,7 @@ public class StateLevel_1 extends EstadoJuego{
     
     public static void pedir_nombre()
     {
-        nombre_jugador= JOptionPane.showInputDialog("Escribe tu nombre jugador");
+        nombre_jugador= JOptionPane.showInputDialog("Escribe tu nombre jugador","New Player");
     }
 
     @Override
