@@ -144,14 +144,14 @@ public class TileMap {
                 int valor=map[fila][col];
                 int fila_fila=(int)(valor/this.num_tile_filas);
                 int fila_col=(int)(valor%this.num_tile_columnas-1);                
-                //if(fila_col>=0){ 
+                if(fila_col>=0){ 
                     g2d.drawImage(
                         tiles[fila_fila][fila_col].getImage(),
                         (int)(this.x+col)*tamanio_celda , 
                         (int)(this.y+fila)*tamanio_celda ,
                         null 
                     );
-                //}
+                }
             }
         }
     }   
