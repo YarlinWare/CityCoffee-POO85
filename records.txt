@@ -1,6 +1,5 @@
-JUAN
-999999
 Felipe
+<<<<<<< HEAD
 999999
 
 hlkjh
@@ -9,3 +8,8 @@ hlkjh
 999999
 New Player
 999999
+=======
+99999
+Juan
+999999
+>>>>>>> 9b825b6741455bdedbfbdf077ee8a1598ad88d3c
