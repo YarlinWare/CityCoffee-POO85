@@ -8,14 +8,12 @@ package estadojuego;
 import TileMap.BackGround;
 import TileMap.TileMap;
 import coffeecity.PanelJuego;
-import com.sun.istack.internal.logging.Logger;
 import entity.Player;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.util.logging.Level;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 /**

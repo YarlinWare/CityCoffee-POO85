@@ -1,11 +1,9 @@
-JUAN
-999999
 Felipe
 999999
+Cristhian
+999999
+Juan
+999999
+Mauricio
+999999
 
-hlkjh
-999999
-ñjñkljñ
-999999
-New Player
-999999
