@@ -17,10 +17,7 @@ import Archivos.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Rapter
- */
+
 public class ListRecord extends EstadoJuego{
     
     BackGround bg;
@@ -30,7 +27,7 @@ public class ListRecord extends EstadoJuego{
     
     public ListRecord(ManagerEstados ms) throws IOException {
        this.ms=ms;
-       bg=new BackGround("..\\Assets\\Background\\Fondo.gif",1.0);
+       bg=new BackGround("/Assets/Background/Fondo.gif",1.0);
        bg.setPosition(0, 0);
        bg.setVector(0, 0.08);
        this.iniciar();
@@ -38,16 +35,17 @@ public class ListRecord extends EstadoJuego{
 
     @Override
     public void iniciar() {
-    
+
+
     }
 
     @Override
     public void draw(Graphics2D g2d) {
         bg.draw(g2d);//pinta el fondo
         
-        ImageIcon Img = new ImageIcon(getClass().getResource("..\\images\\Logo2.png"));
+        ImageIcon Img = new ImageIcon(getClass().getResource("/images/Logo2.png"));
         g2d.drawImage(Img.getImage(), 25, 5, 115, 65, null);   
-        ImageIcon Img2 = new ImageIcon(getClass().getResource("..\\images\\edificios.png"));
+        ImageIcon Img2 = new ImageIcon(getClass().getResource("/images/edificios.png"));
         g2d.drawImage(Img2.getImage(), 0, 0, 320, 240, null);
         
         
@@ -55,12 +53,7 @@ public class ListRecord extends EstadoJuego{
         g2d.setFont(font);
         g2d.setColor(Color.WHITE);
         
-        records.crea_archivo("", "records.txt");
-        try {
-            records.modifica_archivo("records.txt");
-        } catch (IOException ex) {
-            Logger.getLogger(ListRecord.class.getName()).log(Level.SEVERE, null, ex);
-        }
+
         
         int ynombre, ypuntaje, contador;
         ynombre=40;

@@ -1,50 +1,52 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package estadojuego;
 
+import Archivos.records;
 import TileMap.BackGround;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 import javafx.scene.layout.Background;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 
-/**
- *
- * @author 
- */
+
 public class EstadoMenu extends EstadoJuego{
     BackGround bg;
     
     String[] lopciones={"Nuevo Juego","Records","Creditos","Salir"};
     int opcionactual=0;
-    
+
     public EstadoMenu(ManagerEstados ms) throws IOException{
        this.ms=ms;
-       bg=new BackGround("..\\Assets\\Background\\Fondo.gif",1.0);
+       bg=new BackGround("/Assets/Background/Fondo.gif",1.0);
        bg.setPosition(0, 0);
        bg.setVector(0, 0.08);
+       this.iniciar();
     }
 
     @Override
     public void iniciar() {
-      
+        try {
+            records.modifica_archivo("records.txt");
+        } catch (IOException ex) {
+            Logger.getLogger(ListRecord.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     @Override
     public void draw(Graphics2D g2d) {
         bg.draw(g2d);//pinta el fondo
         
-        ImageIcon Img = new ImageIcon(getClass().getResource("..\\images\\Logo2.png"));
+        ImageIcon Img = new ImageIcon(getClass().getResource("/images/Logo2.png"));
         g2d.drawImage(Img.getImage(), 45, 5, 230, 130, null);   
-        ImageIcon Img2 = new ImageIcon(getClass().getResource("..\\images\\edificios2.png"));
+        ImageIcon Img2 = new ImageIcon(getClass().getResource("/images/edificios2.png"));
         g2d.drawImage(Img2.getImage(), 0, 0, 320, 240, null);
         
         //pintamos el titulo

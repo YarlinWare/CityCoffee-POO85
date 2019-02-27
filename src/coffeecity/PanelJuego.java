@@ -11,10 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import java.io.IOException;
-/**
- *
- * @author 
- */
+
 public class PanelJuego extends JPanel implements Runnable,KeyListener{
     public static final int WIDTH=320;
     public static final int HEIGHT=240;
