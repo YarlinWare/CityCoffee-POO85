@@ -6,10 +6,6 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import coffeecity.PanelJuego;
 
-/**
- *
- * @author rapterpakfa
- */
 public class BackGround {
     double x;
     double  y;    
