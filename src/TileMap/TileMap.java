@@ -110,7 +110,7 @@ public class TileMap {
     public int getTipo(int x,int y){
         int valor = map[x][y];
         int ffila = valor / this.num_tile_columnas;
-        int fcol = valor % this.num_tile_columnas-1;  
+        int fcol = valor % this.num_tile_columnas;  
         return tiles[ffila][fcol].getType();
         
     }
