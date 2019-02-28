@@ -22,20 +22,6 @@ public class Player extends MapObject {
     private static final int ATACAR = 20;
     
     
-    /*
-    private int health;
-    private int maxHealth;
-    private int fire;
-    private int maxFire;
-    private boolean dead;
-    private boolean flinching;
-    private long flinchTimer;
-
-    // fireball
-    private boolean firing;
-    private int fireCost;
-    private int fireBallDamage;*/
-    
     public Player(TileMap tm)throws IOException{        
         super(tm);
         // El personaje empezara cayendo
@@ -59,17 +45,12 @@ public class Player extends MapObject {
         this.maxcaidaspeed=4.0;
         
         // Salto
-        this.maxspeedsalto = -4.8;
+        this.maxspeedsalto = -5.8;
         this.minspeedsalto = 0.3;
 		
         this.mirarderecha = true;
         
-        /*health = maxHealth = 5;
-        fire = maxFire = 2500;
-        fireCost = 200;
-        fireBallDamage = 5;*/
-                
-        
+                    
         BufferedImage spritesheet = ImageIO.read(getClass().getResourceAsStream(""
                 + "/Assets/character/hero2.png"));
         

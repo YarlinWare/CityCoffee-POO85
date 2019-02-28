@@ -49,13 +49,13 @@ public class StateLevel_1 extends EstadoJuego{
     public void draw(Graphics2D g2d) {
         g2d.setColor(Color.black);
         g2d.fillRect(0, 0, PanelJuego.WIDTH, PanelJuego.HEIGHT);
-        //tilemap.draw(g2d);
+        tilemap.draw(g2d);
         player.draw(g2d);
     }
 
     @Override
     public void update() {
-       tilemap.setPosicion(PanelJuego.WIDTH / 2 - player.getX(),PanelJuego.HEIGHT / 2 - player.getY());
+       //tilemap.setPosicion(PanelJuego.WIDTH / 2 - player.getX(),PanelJuego.HEIGHT / 2 - player.getY());
        player.update();
     }
     

@@ -81,12 +81,12 @@ public class PanelJuego extends JPanel implements Runnable,KeyListener{
         }
     }
     
-  public  void draw(){
-        sm.draw(g2d);
-  }
-  public  void update(){
-      sm.update();
-  }
+    public  void draw(){
+          sm.draw(g2d);
+    }
+    public  void update(){
+        sm.update();
+    }
   
    public  void drawinPanel(Graphics2D g){
        Graphics2D g2 = (Graphics2D) this.getGraphics();
