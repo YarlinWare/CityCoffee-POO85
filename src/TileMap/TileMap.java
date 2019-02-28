@@ -132,13 +132,13 @@ public class TileMap {
     
     public void draw(Graphics2D g2d){
         
-        System.out.println("filaOffset->"+this.filaOffset);
+       /* System.out.println("filaOffset->"+this.filaOffset);
         System.out.println("num_filas_pintado"+this.num_filas_pintado);
         System.out.println("columnaOffset->"+this.columnaOffset);
-        System.out.println("num_columnas_pintado"+this.num_columnas_pintado);
+        System.out.println("num_columnas_pintado"+this.num_columnas_pintado);*/
         
         for(int fila=this.filaOffset;fila<this.filaOffset+this.num_map_filas;fila++){
-            if (fila>=num_map_filas) break;
+            //if (fila>=num_map_filas) break;
             for(int col=this.columnaOffset;col<this.columnaOffset+this.num_map_columnas;col++){            
                 if (col>=num_map_columnas) break;
                 int valor=map[fila][col];

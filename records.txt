@@ -1,11 +1,8 @@
 Felipe
 999999
-Cristhian
+Laura
 999999
-Juan
-999999
-Mauricio
-999999
-
 New Player
+999999
+}
 999999

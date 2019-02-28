@@ -41,7 +41,7 @@ public class StateLevel_1 extends EstadoJuego{
             tilemap.cargarTiles("/Assets/Tileset/prueba.png");
             tilemap.cargarMapa("/Assets/maps/level_4.txt");
             player = new Player(tilemap);
-            player.setPosition(50, 50);
+            player.setPosition(40, 200);
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(StateLevel_1.class.getName()).log(Level.SEVERE, null, ex);
         }   
@@ -49,7 +49,7 @@ public class StateLevel_1 extends EstadoJuego{
 
     @Override
     public void draw(Graphics2D g2d) {
-        g2d.setColor(Color.GRAY);
+        g2d.setColor(Color.black);
         g2d.fillRect(0, 0, PanelJuego.WIDTH, PanelJuego.HEIGHT);
         tilemap.draw(g2d);
         player.draw(g2d);
@@ -57,7 +57,7 @@ public class StateLevel_1 extends EstadoJuego{
 
     @Override
     public void update() {
-        tilemap.setPosicion(PanelJuego.WIDTH / 2 - player.getX(),PanelJuego.HEIGHT / 2 - player.getY());
+       //tilemap.setPosicion(PanelJuego.WIDTH / 2 - player.getX(),PanelJuego.HEIGHT / 2 - player.getY());
        // player.update();
     }
     

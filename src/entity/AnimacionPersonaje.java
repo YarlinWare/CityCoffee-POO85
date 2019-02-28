@@ -1,16 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entity;
 
 import java.awt.image.BufferedImage;
 
-/**
- *
- * @author Rapter
- */
 public class AnimacionPersonaje {
     BufferedImage[] frames;
     long delay;//tiempo de espera
