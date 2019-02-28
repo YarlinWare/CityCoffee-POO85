@@ -7,3 +7,5 @@ Juan
 Mauricio
 999999
 
+New Player
+999999
