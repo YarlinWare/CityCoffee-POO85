@@ -10,24 +10,20 @@ import coffeecity.PanelJuego;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 
-/**
- *
- * @author 
- */
+
 public abstract class MapObject {
     //TileSet
     protected TileMap tilemap;
     protected int tsize;
-    
-    //Locaizacion en el mapa
     protected double xmap;
-    protected double ymap;    
+    protected double ymap;
     
-    //Dimension    
+    
+    //dimension
+    
     protected int width;
     protected int height;
-    
-    //Posicion
+    //posicion
     protected double x;
     protected double y;
     protected double dx;
@@ -38,41 +34,41 @@ public abstract class MapObject {
     protected int colActual;
     protected double xdestino;
     protected double ydestino;
-    protected boolean arribaizquierda;
+    protected boolean  arribaizquierda;
     protected boolean arribaderecha;
     protected boolean abajoizquierda;
     protected boolean abajoderecha;
     protected double xaux;
     protected double yaux;
     
-    
-    //Atributos
+    //atributes
     protected double movespeed;
     protected double maxspeed;//aceleracion desplazamiento lateral
     protected double minspeed;//deceleracion desplazamiento lateral
     protected double maxspeedsalto;//aceleracion
     protected double minspeedsalto;//deceleracion
     protected double caidaspeed;//deceleracion
-    protected double maxcaidaspeed;//Max vel. caida
+    protected double maxcaidaspeed;
     
-    //movimiento    
+    //movimiento
+    
     boolean left;
     boolean right;
     boolean up;
     boolean down;
     boolean caida;
     boolean salto;
-    boolean atacando;
+    boolean disparando;
     
     //caja colisiones
-    int colliderwidth;
-    int  colliderheight;
-
-    //Animacion
-    AnimacionPersonaje animacion;
-    int animacionActual;
-    int animacionPrev;
-    boolean mirarderecha;
+   int colliderwidth;
+   int  colliderheight;
+   
+   // Animacion
+   AnimacionPersonaje animacion;
+   int animacionActual;
+   int animacionPrev;
+   boolean mirarderecha;
     
     public MapObject(TileMap tm){
         this.tilemap=tm;
@@ -87,67 +83,65 @@ public abstract class MapObject {
         Rectangle2D rectpropio=this.crearRectangulo();
         Rectangle2D rectajeno=this.crearRectangulo();
         
-        return rectpropio.intersects(rectajeno);        
-    }
-    
-    
-    public void logicaColision(){
-        this.filaActual=(int) (y/this.tsize);
-        this.colActual=(int) (x/this.tsize);
-        this.xdestino=x+dx;
-        this.ydestino=y+dy;
-        this.xaux=x;
-        this.yaux=y;
-
-        this.calcularColision(x, this.ydestino);
-        //hacia arriba
-        if(dy<0){
-            if(this.arribaizquierda||this.arribaderecha){
-                dy=0;
-                this.yaux=filaActual*tsize+this.colliderheight/2;
-            }else{
-                this.yaux+=dy;
-            }
-        //hacia abajo
-        }if(dy>0){
-             if(this.abajoizquierda||this.abajoderecha){
-                dy=0;
-                caida=false;
-
-            }else{
-                this.yaux+=dy;
-            }
-        }
-        //hacia izquierda
-        this.calcularColision(this.xdestino, y);
-         if(dx<0){//hacia izq
-            if(this.arribaizquierda||this.abajoizquierda){
-                dx=0;
-                this.xaux=colActual*tsize+this.colliderwidth/2;
-            }else{
-                this.xaux+=dx;
-            }
-        //hacia izquierda
-        }if(dx>0){
-             if(this.arribaderecha||this.abajoderecha){
-
-                dx=0;
-                this.xaux=((colActual+1)*tsize-this.colliderwidth/2);
-            }else{
-                 this.xaux+=dx;
-            }        
-        }
-
-        if(this.caida){
-            this.calcularColision(x, this.ydestino+1);
-            if((!this.abajoizquierda)&&(!this.abajoderecha)){
-                this.caida=true;
-            }
-        }
+        return rectpropio.intersects(rectajeno);
         
     }
     
-    public void calcularColision(double x,double y){
+    
+    
+      public void logicaColision(){
+      this.filaActual=(int) (y/this.tsize);
+      this.colActual=(int) (x/this.tsize);
+      this.xdestino=x+dx;
+      this.ydestino=y+dy;
+      this.xaux=x;
+      this.yaux=y;
+      
+      this.calcularColision(x, this.ydestino);
+      if(dy<0){
+          if(this.arribaizquierda||this.arribaderecha){
+              dy=0;
+              this.yaux=filaActual*tsize+this.colliderheight/2;
+          }else{
+              this.yaux+=dy;
+          }//hacia arriba
+      }if(dy>0){
+           if(this.abajoizquierda||this.abajoderecha){
+              dy=0;
+              caida=false;
+              
+          }else{
+              this.yaux+=dy;
+          }
+      }//hacia abajo
+      this.calcularColision(this.xdestino, y);
+       if(dx<0){//hacia izq
+          if(this.arribaizquierda||this.abajoizquierda){
+              dx=0;
+              this.xaux=colActual*tsize+this.colliderwidth/2;
+          }else{
+              this.xaux+=dx;
+          }//hacia izquierda
+      }if(dx>0){
+           if(this.arribaderecha||this.abajoderecha){
+               
+              dx=0;
+              this.xaux=((colActual+1)*tsize-this.colliderwidth/2);
+          }else{
+               this.xaux+=dx;
+          }//hacia izquierda
+      }
+      
+      if(this.caida){
+          this.calcularColision(x, this.ydestino+1);
+          if((!this.abajoizquierda)&&(!this.abajoderecha)){
+              this.caida=true;
+          }
+      }
+        
+    }
+    
+   public void calcularColision(double x,double y){
         int tileizquierdo=((int)x-this.colliderwidth/2)/this.tsize;
         int tilederecha=((int)x+this.colliderwidth/2-1)/this.tsize;
         int tileabajo=((int)y+this.colliderheight/2-1)/this.tsize;
@@ -189,7 +183,8 @@ public abstract class MapObject {
         this.dx=dx;
         this.dy=dy;
     }
-        
+    
+    
     public boolean fueraDeLugar(){
         return (x+xmap-width<0)||(x+xmap+width>PanelJuego.WIDTH)||(y+ymap-height<0)||(y+ymap+height>PanelJuego.HEIGHT);
     }
@@ -468,29 +463,13 @@ public abstract class MapObject {
     public void setColliderheight(int colliderheight) {
         this.colliderheight = colliderheight;
     }
-    
-    public boolean isMirarderecha() {
-        return mirarderecha;
+
+    public boolean isDisparando() {
+        return disparando;
     }
 
-    public void setMirarderecha(boolean mirarderecha) {
-        this.mirarderecha = mirarderecha;
-    }
-
-    public double getMaxcaidaspeed() {
-        return maxcaidaspeed;
-    }
-
-    public void setMaxcaidaspeed(double maxcaidaspeed) {
-        this.maxcaidaspeed = maxcaidaspeed;
-    }
-
-    public boolean isAtacando() {
-        return atacando;
-    }
-
-    public void setAtacando(boolean atacando) {
-        this.atacando = atacando;
+    public void setDisparando(boolean disparando) {
+        this.disparando = disparando;
     }
 
     public AnimacionPersonaje getAnimacion() {
@@ -501,22 +480,13 @@ public abstract class MapObject {
         this.animacion = animacion;
     }
 
-    public int getAnimacionActual() {
-        return animacionActual;
+    public boolean isMirarderecha() {
+        return mirarderecha;
     }
 
-    public void setAnimacionActual(int animacionActual) {
-        this.animacionActual = animacionActual;
+    public void setMirarderecha(boolean mirarderecha) {
+        this.mirarderecha = mirarderecha;
     }
-
-    public int getAnimacionPrev() {
-        return animacionPrev;
-    }
-
-    public void setAnimacionPrev(int animacionPrev) {
-        this.animacionPrev = animacionPrev;
-    }
-    
     
     
     

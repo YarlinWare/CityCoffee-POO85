@@ -35,13 +35,11 @@ public class StateLevel_1 extends EstadoJuego{
     @Override
     public void iniciar() {
         try {            
-            tilemap=new TileMap(32);/*
-            tilemap.cargarTiles("..\\Assets\\Tileset\\ciudad_ai.png");
-            tilemap.cargarMapa("..\\Assets\\maps\\level_5.txt");  */   
+            tilemap=new TileMap(32); 
             tilemap.cargarTiles("/Assets/Tileset/prueba.png");
             tilemap.cargarMapa("/Assets/maps/level_4.txt");
             player = new Player(tilemap);
-            player.setPosition(40, 200);
+            player.setPosition(0, 0);
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(StateLevel_1.class.getName()).log(Level.SEVERE, null, ex);
         }   
@@ -57,8 +55,8 @@ public class StateLevel_1 extends EstadoJuego{
 
     @Override
     public void update() {
-       //tilemap.setPosicion(PanelJuego.WIDTH / 2 - player.getX(),PanelJuego.HEIGHT / 2 - player.getY());
-       // player.update();
+       tilemap.setPosicion(PanelJuego.WIDTH / 2 - player.getX(),PanelJuego.HEIGHT / 2 - player.getY());
+       player.update();
     }
     
     public static void pedir_nombre()
@@ -78,7 +76,7 @@ public class StateLevel_1 extends EstadoJuego{
            case KeyEvent.VK_RIGHT:{player.setRight(true);}break;
            case KeyEvent.VK_LEFT:{player.setLeft(true);}break;
            case KeyEvent.VK_SPACE:{player.setSalto(true);}break;
-           case KeyEvent.VK_F:{player.setAtacando(true);}break;
+           //case KeyEvent.VK_F:{player.setAtacando(true);}break;
         }
     }
 
@@ -89,7 +87,7 @@ public class StateLevel_1 extends EstadoJuego{
            case KeyEvent.VK_RIGHT:{player.setRight(false);}break;
            case KeyEvent.VK_LEFT:{player.setLeft(false);}break;
            case KeyEvent.VK_SPACE:{player.setSalto(false);}break;
-           case KeyEvent.VK_F:{player.setAtacando(false);}break;
+           //case KeyEvent.VK_F:{player.setAtacando(false);}break;
         }
     }
     

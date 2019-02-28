@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package entity;
 
 import TileMap.TileMap;
@@ -12,10 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 
-/**
- *
- * @author Rapter
- */
 public class Player extends MapObject {
     // animacion
     private ArrayList<BufferedImage[]> sprites;
@@ -31,7 +22,7 @@ public class Player extends MapObject {
     private static final int ATACAR = 20;
     
     
-    // player stuff
+    /*
     private int health;
     private int maxHealth;
     private int fire;
@@ -43,11 +34,11 @@ public class Player extends MapObject {
     // fireball
     private boolean firing;
     private int fireCost;
-    private int fireBallDamage;
+    private int fireBallDamage;*/
     
     public Player(TileMap tm)throws IOException{        
         super(tm);
-        // El personaje empezara callendo
+        // El personaje empezara cayendo
         this.caida=true;
         
         // Tamanio de cada frame
@@ -55,7 +46,7 @@ public class Player extends MapObject {
         height = 64;
         
         // Detectando colisiones
-        this.colliderwidth = 45;
+        this.colliderwidth = 20;
         colliderheight = 45;
         
         // Movimiento
@@ -73,10 +64,10 @@ public class Player extends MapObject {
 		
         this.mirarderecha = true;
         
-        health = maxHealth = 5;
+        /*health = maxHealth = 5;
         fire = maxFire = 2500;
         fireCost = 200;
-        fireBallDamage = 5;
+        fireBallDamage = 5;*/
                 
         
         BufferedImage spritesheet = ImageIO.read(getClass().getResourceAsStream(""
