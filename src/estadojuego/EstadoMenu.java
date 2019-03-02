@@ -10,9 +10,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-//import javafx.scene.layout.Background;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 
 
@@ -33,8 +31,9 @@ public class EstadoMenu extends EstadoJuego{
     @Override
     public void iniciar() {
         try {
-            records.almacena_nombres("records.txt");
-            records.modifica_archivo("records.txt");
+                records.crea_archivo("records.txt");
+                records.almacena_nombres("records.txt");
+                records.modifica_archivo("records.txt");
         } catch (IOException ex) {
             Logger.getLogger(ListRecord.class.getName()).log(Level.SEVERE, null, ex);
         }

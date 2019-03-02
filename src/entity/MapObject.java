@@ -115,7 +115,7 @@ public abstract class MapObject {
           }
       }//hacia abajo
       this.calcularColision(this.xdestino, y);
-       if(dx<0){//hacia izq
+       if(dx<=0){//hacia izq
           if(this.arribaizquierda||this.abajoizquierda){
               dx=0;
               this.xaux=colActual*tsize+this.colliderwidth/2;

@@ -13,6 +13,19 @@ public class records {
      public static String nombre_jugador= StateLevel_1.nombre_jugador;
      public static int score = 999999;
      public static ArrayList<String> nombres = new ArrayList<String>();
+     
+     public static void crea_archivo(String path) throws IOException
+     {
+        try {
+        File file = new File(path);
+        // Si el archivo no existe lo crea
+        if (!file.exists()) {
+            file.createNewFile();
+        }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+     }
 
      public static void modifica_archivo(String path) throws IOException{
             try
