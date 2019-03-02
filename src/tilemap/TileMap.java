@@ -4,6 +4,7 @@
 package tilemap;
 
 import coffeecity.PanelJuego;
+import entity.Player;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
@@ -120,7 +121,12 @@ public class TileMap {
          }       */ 
     }
     
+    public double getTween() {
+        return tween;
+    }
     
+    public void setTween(double d) { tween = d; }   
+        
     public void setPosicion(double x,double y){
         this.x+=(x-this.x)*tween;
         this.y+=(y-this.y)*tween;
@@ -128,26 +134,33 @@ public class TileMap {
         columnaOffset=(int)-this.x/tamanio_celda;
         filaOffset=(int)-this.y/tamanio_celda;
     }
-
-        
         
     public void ajustarArea(){
-        if(x<xmin){x=xmin;}
-        if(x>xmax){x=xmax;}
-        if(y<ymin){y=ymin;}
-        if(y>ymax){x=ymax;}        
+        if(x < xmin){
+            x = xmin;
+        }
+        if(y < ymin){
+            y = ymin;
+        }
+        if(x > xmax){
+            x = xmax;
+        }
+        if(y > ymax){
+            y = ymax;
+        }       
     }
     
     public void draw(Graphics2D g2d){
         
         for(int fila=this.filaOffset;fila<this.filaOffset+this.num_map_filas;fila++){
-         if (fila>=num_map_filas) break;
+            if (fila>=num_map_filas) break;
             for(int col=this.columnaOffset;col<this.columnaOffset+this.num_map_columnas;col++){            
                 if (col>=num_map_columnas) break;
                 int valor=map[fila][col];
                 int fila_fila=valor/num_tile_filas;
-                int fila_col=valor%num_tile_columnas-1;                
-/*
+                int fila_col=valor%num_tile_columnas-1; 
+                
+                /*
                 g2d.drawImage(
                     tiles[fila_fila][fila_col].getImage(),
                     (int)(this.x+col)*tamanio_celda , 
@@ -160,7 +173,8 @@ public class TileMap {
                         tiles[fila_fila][fila_col].getImage(),
                         (int)x + col * tamanio_celda,
                         (int)y + fila * tamanio_celda,
-                        null); 
+                        null
+                    ); 
                 }
 
             }
@@ -335,10 +349,7 @@ public class TileMap {
         this.image = image;
     }
 
-    public double getTween() {
-        return tween;
-    }
-    public void setTween(double d) { tween = d; }
+    
     
     
     

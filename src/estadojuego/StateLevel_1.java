@@ -20,6 +20,7 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
+import java.applet.AudioClip;
 /**
  *
  * @author Rapter
@@ -35,10 +36,13 @@ public class StateLevel_1 extends EstadoJuego{
         this.ms=ms;        
         this.iniciar();
     }
-
+    
+    
     @Override
-    public void iniciar() {
-        try {            
+    public void iniciar() {    
+        try { 
+            //AudioClip sonido;
+            //sonido = java.applet.Applet.newAudioClip(getClass().getResource("/assets/sounds/1.wav"));      
             tilemap=new TileMap(32); 
             tilemap.cargarTiles("/assets/tileset/prueba.png");
             tilemap.cargarMapa("/assets/maps/level_4.txt");
@@ -55,14 +59,25 @@ public class StateLevel_1 extends EstadoJuego{
         //g2d.setColor(Color.decode("#707cc2"));
         g2d.setColor(Color.decode("#0087b6"));
         g2d.fillRect(0, 0, PanelJuego.WIDTH, PanelJuego.HEIGHT);
-        tilemap.draw(g2d);
         player.draw(g2d);
+        tilemap.draw(g2d);         
     }
-
+    
     @Override
     public void update() {
        //tilemap.setPosicion(PanelJuego.WIDTH / 2 - player.getX(),PanelJuego.HEIGHT / 2 - player.getY());
-       player.update();
+       /*tilemap.setPosicion(
+            ((PanelJuego.WIDTH / 2) - player.getX()),
+            ((PanelJuego.HEIGHT / 2) - player.getY())
+        );*/
+        tilemap.setPosicion(
+            (PanelJuego.WIDTH / 2) - player.getX(),
+            (PanelJuego.HEIGHT / 2) - player.getY()
+        );
+        player.update();
+        System.out.println("tamaño ventana" +PanelJuego.WIDTH / 2 +" Posicion heroe x" +player.getX());
+        System.out.println("tamaño ventana" +PanelJuego.HEIGHT / 2 +" Posicion heroe y" +player.getY());
+
     }
     
     public static void pedir_nombre()

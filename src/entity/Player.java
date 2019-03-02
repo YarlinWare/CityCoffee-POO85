@@ -52,21 +52,21 @@ public class Player extends MapObject {
         
                     
         BufferedImage spritesheet = ImageIO.read(
-                getClass().getResourceAsStream(""
-                + "/assets/character/enemy1.png")
-        );
+                                    getClass().getResourceAsStream(""
+                                    + "/assets/character/enemy1.png")
+                                    );
         
         sprites = new ArrayList<BufferedImage[]>();
         for(int i = 0; i < 21; i++) {
             int contador=0;
                 if((i==REPOSO)||(i==ANDAR)||(i==ATACAR)){
-                BufferedImage[] bi =new BufferedImage[NUMFRAMES[contador]];
+                    BufferedImage[] bi =new BufferedImage[NUMFRAMES[contador]];
 
-                for(int j = 0; j < NUMFRAMES[contador]; j++) {
-                    bi[j] = spritesheet.getSubimage(j* width,i * height,64,64);
-                        }	
-                sprites.add(bi);
-                contador++;
+                    for(int j = 0; j < NUMFRAMES[contador]; j++) {
+                        bi[j] = spritesheet.getSubimage(j* width,i * height,64,64);
+                    }	
+                    sprites.add(bi);
+                    contador++;
                 }
         }
         
