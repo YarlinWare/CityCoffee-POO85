@@ -26,7 +26,7 @@ public class ListRecord extends EstadoJuego{
     
     public ListRecord(ManagerEstados ms) throws IOException {
        this.ms=ms;
-       bg=new BackGround("/Assets/Background/Fondo.gif",1.0);
+       bg=new BackGround("/assets/background/Fondo.gif",1.0);
        bg.setPosition(0, 0);
        bg.setVector(0, 0.08);
        this.iniciar();
@@ -60,7 +60,11 @@ public class ListRecord extends EstadoJuego{
         try {
             f = new FileReader("records.txt");
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(ListRecord.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(
+                ListRecord.class.getName()).log(Level.SEVERE, 
+                null, 
+                ex
+            );
         }
         BufferedReader b = new BufferedReader(f);
         try {

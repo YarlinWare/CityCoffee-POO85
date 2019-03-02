@@ -40,15 +40,15 @@ public class StateLevel_1 extends EstadoJuego{
     public void iniciar() {
         try {            
             tilemap=new TileMap(32); 
-            tilemap.cargarTiles("/Assets/Tileset/prueba.png");
-            tilemap.cargarMapa("/Assets/maps/level_4.txt");
+            tilemap.cargarTiles("/assets/tileset/prueba.png");
+            tilemap.cargarMapa("/assets/maps/level_4.txt");
             player = new Player(tilemap);
             player.setPosition(0, 0);
         } catch (IOException ex) {
             java.util.logging.Logger.getLogger(StateLevel_1.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }
-    private URL url = getClass().getResource("/Assets/Tileset/Level_1.png");
+    private URL url = getClass().getResource("/assets/tileset/Level_1.png");
     
     @Override
     public void draw(Graphics2D g2d) {        

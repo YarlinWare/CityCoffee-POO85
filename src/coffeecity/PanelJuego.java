@@ -73,11 +73,17 @@ public class PanelJuego extends JPanel implements Runnable,KeyListener{
                 try {
                     Thread.sleep(Math.abs(timewait));
                 } catch (InterruptedException ex) {
-                    Logger.getLogger(PanelJuego.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(
+                        PanelJuego.class.getName()).log(Level.SEVERE, 
+                        null, 
+                        ex
+                    );
                 }
                 
             } } catch (IOException ex) {
-            Logger.getLogger(PanelJuego.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(
+                PanelJuego.class.getName()).log(Level.SEVERE, null, ex
+            );
         }
     }
     

@@ -148,22 +148,22 @@ public abstract class MapObject {
         int tileabajo=((int)y+this.colliderheight/2-1)/this.tsize;
         int tilearriba=((int)y-this.colliderheight/2)/this.tsize;
         
-        if(tilemap.getTipo(tilearriba, tileizquierdo)==Tile.colision){
+        if(tilemap.getTipo(tilearriba, tileizquierdo)==Tile.COLISION){
             this.arribaizquierda=true;
         }else{
             this.arribaizquierda=false;
         }
-        if(tilemap.getTipo(tilearriba, tilederecha)==Tile.colision){
+        if(tilemap.getTipo(tilearriba, tilederecha)==Tile.COLISION){
             this.arribaderecha=true;
         }else{
              this.arribaderecha=false;
         }
-        if(tilemap.getTipo(tileabajo, tileizquierdo)==Tile.colision){
+        if(tilemap.getTipo(tileabajo, tileizquierdo)==Tile.COLISION){
             this.abajoizquierda=true;
         }else{
             this.abajoizquierda=false;
         }
-        if(tilemap.getTipo(tileabajo, tilederecha)==Tile.colision){
+        if(tilemap.getTipo(tileabajo, tilederecha)==Tile.COLISION){
             this.abajoderecha=true;
         }else{
            this.abajoderecha=false;

@@ -26,7 +26,7 @@ public class Credits extends EstadoJuego {
 
     public Credits(ManagerEstados ms) throws IOException  {
        this.ms=ms;
-       bg=new BackGround("/Assets/Background/Fondo.gif",1.0);
+       bg=new BackGround("/assets/background/Fondo.gif",1.0);
        bg.setPosition(0, 0);
        bg.setVector(0, 0.08);
        this.iniciar();
