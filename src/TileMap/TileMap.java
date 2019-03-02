@@ -112,12 +112,12 @@ public class TileMap {
         int valor = map[x][y];
         int ffila = valor / this.num_tile_columnas;
         int fcol = valor % this.num_tile_columnas;  
-        //return tiles[ffila][fcol].getType();
+        return tiles[ffila][fcol].getType();/*
         if(fcol>=0){
             return tiles[ffila][fcol].getType(); 
          }else{
              return 0;
-         }        
+         }       */ 
     }
     
     

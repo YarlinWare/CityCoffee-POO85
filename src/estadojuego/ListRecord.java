@@ -47,13 +47,10 @@ public class ListRecord extends EstadoJuego{
         g2d.drawImage(Img.getImage(), 25, 5, 115, 65, null);   
         ImageIcon Img2 = new ImageIcon(getClass().getResource("/images/edificios.png"));
         g2d.drawImage(Img2.getImage(), 0, 0, 320, 240, null);
-        
-        
+                
         Font font=new Font("Arial",Font.PLAIN,10);
         g2d.setFont(font);
         g2d.setColor(Color.WHITE);
-        
-
         
         int ynombre, ypuntaje, contador;
         ynombre=40;
@@ -83,18 +80,23 @@ public class ListRecord extends EstadoJuego{
                 }
                 if(contador>=10)
                     break;
-                
             }
         } catch (IOException ex) {
-            Logger.getLogger(ListRecord.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(
+                ListRecord.class.getName()).log(Level.SEVERE, 
+                null, 
+                ex
+            );
         }
         try {
             b.close();
         } catch (IOException ex) {
-            Logger.getLogger(ListRecord.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(
+                ListRecord.class.getName()).log(Level.SEVERE, 
+                null, 
+                ex
+            );
         }
-        
-        
         
         for(int i=0;i<this.lopciones.length;i++){
             if(i==this.opcionactual){
@@ -102,10 +104,8 @@ public class ListRecord extends EstadoJuego{
             }else{
                 g2d.setColor(Color.GREEN);
             }
-             g2d.drawString(this.lopciones[i], 200, 155+(i*20));
-        }
-        
-        
+                g2d.drawString(this.lopciones[i], 200, 155+(i*20));
+        }  
     }
     
     public void seleccionar(){
@@ -132,15 +132,24 @@ public class ListRecord extends EstadoJuego{
     public void keyPressed(KeyEvent ke) {
         int tecla=ke.getKeyCode();
         switch(tecla){
-           case KeyEvent.VK_UP: {this.opcionactual=this.opcionactual-1;
-                                  if(opcionactual<0){
-                                      opcionactual=this.lopciones.length-1;
-                                  }} break;
-           case KeyEvent.VK_DOWN: {this.opcionactual=this.opcionactual+1;
-                                  if(opcionactual>this.lopciones.length-1){
-                                      opcionactual=0;
-                                  }} break;
-           case KeyEvent.VK_ENTER: {this.seleccionar();} break;
+           case KeyEvent.VK_UP: {
+                this.opcionactual=this.opcionactual-1;
+                if(opcionactual<0){
+                    opcionactual=this.lopciones.length-1;
+                }
+            } 
+            break;
+            case KeyEvent.VK_DOWN: {
+                this.opcionactual=this.opcionactual+1;
+                if(opcionactual>this.lopciones.length-1){
+                    opcionactual=0;
+                }
+            } 
+            break;
+            case KeyEvent.VK_ENTER: {
+                this.seleccionar();
+            } 
+            break;
        }
     }
 

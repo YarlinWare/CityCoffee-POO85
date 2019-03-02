@@ -11,11 +11,15 @@ import coffeecity.PanelJuego;
 import entity.Player;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.net.URL;
 import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-
 /**
  *
  * @author Rapter
@@ -44,10 +48,12 @@ public class StateLevel_1 extends EstadoJuego{
             java.util.logging.Logger.getLogger(StateLevel_1.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }
-
+    private URL url = getClass().getResource("/Assets/Tileset/Level_1.png");
+    
     @Override
-    public void draw(Graphics2D g2d) {
-        g2d.setColor(Color.black);
+    public void draw(Graphics2D g2d) {        
+        //g2d.setColor(Color.decode("#707cc2"));
+        g2d.setColor(Color.decode("#0087b6"));
         g2d.fillRect(0, 0, PanelJuego.WIDTH, PanelJuego.HEIGHT);
         tilemap.draw(g2d);
         player.draw(g2d);
@@ -61,7 +67,10 @@ public class StateLevel_1 extends EstadoJuego{
     
     public static void pedir_nombre()
     {
-        nombre_jugador= JOptionPane.showInputDialog("Escribe tu nombre jugador","New Player");
+        nombre_jugador= JOptionPane.showInputDialog(
+            "Escribe tu nombre jugador",
+            "New Player"
+        );
     }
 
     @Override
@@ -90,6 +99,8 @@ public class StateLevel_1 extends EstadoJuego{
            //case KeyEvent.VK_F:{player.setAtacando(false);}break;
         }
     }
+    
+    
     
     
 }

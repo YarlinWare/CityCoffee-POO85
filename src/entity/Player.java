@@ -51,8 +51,10 @@ public class Player extends MapObject {
         this.mirarderecha = true;
         
                     
-        BufferedImage spritesheet = ImageIO.read(getClass().getResourceAsStream(""
-                + "/Assets/character/hero2.png"));
+        BufferedImage spritesheet = ImageIO.read(
+                getClass().getResourceAsStream(""
+                + "/Assets/character/enemy1.png")
+        );
         
         sprites = new ArrayList<BufferedImage[]>();
         for(int i = 0; i < 21; i++) {
@@ -153,9 +155,23 @@ public class Player extends MapObject {
         this.setMapPosition();		
         // Dibujar jugador
         if(this.mirarderecha){                    
-            g.drawImage(this.animacion.getImagen(),(int)(x+xmap-width/2), (int)(y+ymap-height/2),width,height,null);
+            g.drawImage(
+                this.animacion.getImagen(),
+                (int)(x+xmap-width/2), 
+                (int)(y+ymap-height/2),
+                width,
+                height,
+                null
+            );
         }else{
-            g.drawImage(this.animacion.getImagen(),(int)(x+xmap-width/2)+width, (int)(y+ymap-height/2),-width,height, null);
+            g.drawImage(
+                this.animacion.getImagen(),
+                (int)(x+xmap-width/2)+width, 
+                (int)(y+ymap-height/2),
+                -width,
+                height, 
+                null
+            );
         }
     }
    
