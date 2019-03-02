@@ -12,7 +12,7 @@
 - El juego mostrará por pantalla la animación del video juego y al lado las opciones como por ejemplo:
 
     * Metodo para avanzar
-	  `protagonista.avanzar( pasos)`
+	  `protagonista.avanzar(pasos)`
     * Método para atacar:
 	  `protagonista.atacar( )`
 	  
@@ -39,4 +39,4 @@ Proyecto final de Programación Orientada a Objetos [G85], de la Universidad Dis
 
 #### Algunas herramientas utilizadas:
 - www.piskelapp.com
-- gaurav.munjal.us
+- gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/

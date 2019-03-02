@@ -1,49 +1,52 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package estadojuego;
 
-import TileMap.BackGround;
+import archivos.records;
+import tilemap.BackGround;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
-import javafx.scene.layout.Background;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-/**
- *
- * @author 
- */
+import javax.swing.ImageIcon;
+
+
+
 public class EstadoMenu extends EstadoJuego{
     BackGround bg;
     
     String[] lopciones={"Nuevo Juego","Records","Creditos","Salir"};
     int opcionactual=0;
-    
+
     public EstadoMenu(ManagerEstados ms) throws IOException{
        this.ms=ms;
-       bg=new BackGround("..\\Assets\\Background\\Fondo.gif",1.0);
+       bg=new BackGround("/assets/background/Fondo.gif",1.0);
        bg.setPosition(0, 0);
        bg.setVector(0, 0.08);
+       this.iniciar();
     }
 
     @Override
     public void iniciar() {
-      
+        try {
+                records.crea_archivo("records.txt");
+                records.almacena_nombres("records.txt");
+                records.modifica_archivo("records.txt");
+        } catch (IOException ex) {
+            Logger.getLogger(ListRecord.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     @Override
     public void draw(Graphics2D g2d) {
         bg.draw(g2d);//pinta el fondo
         
-        ImageIcon Img = new ImageIcon(getClass().getResource("..\\images\\Logo2.png"));
+        ImageIcon Img = new ImageIcon(getClass().getResource("/images/Logo2.png"));
         g2d.drawImage(Img.getImage(), 45, 5, 230, 130, null);   
-        ImageIcon Img2 = new ImageIcon(getClass().getResource("..\\images\\edificios2.png"));
+        ImageIcon Img2 = new ImageIcon(getClass().getResource("/images/edificios2.png"));
         g2d.drawImage(Img2.getImage(), 0, 0, 320, 240, null);
         
         //pintamos el titulo
@@ -68,11 +71,11 @@ public class EstadoMenu extends EstadoJuego{
     @Override
     public void update() {
         bg.update();
+        
     }
     
     public void seleccionar(){
         if(this.opcionactual==0){
-            StateLevel_1.pedir_nombre();
             this.ms.setEstadoactual(ms.LEVEL1);
             System.out.println("Level");
         }
@@ -103,13 +106,13 @@ public class EstadoMenu extends EstadoJuego{
        int tecla=e.getKeyCode();
        switch(tecla){
            case KeyEvent.VK_UP: {this.opcionactual=this.opcionactual-1;
-                                  if(opcionactual<0){
-                                      opcionactual=this.lopciones.length-1;
-                                  }} break;
+                                    if(opcionactual<0){
+                                        opcionactual=this.lopciones.length-1;
+                                    }} break;
            case KeyEvent.VK_DOWN: {this.opcionactual=this.opcionactual+1;
-                                  if(opcionactual>this.lopciones.length-1){
-                                      opcionactual=0;
-                                  }} break;
+                                    if(opcionactual>this.lopciones.length-1){
+                                        opcionactual=0;
+                                    }} break;
            case KeyEvent.VK_ENTER: {this.seleccionar();} break;
        }
     }

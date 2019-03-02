@@ -11,14 +11,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JPanel;
 import java.io.IOException;
-/**
- *
- * @author 
- */
+
 public class PanelJuego extends JPanel implements Runnable,KeyListener{
     public static final int WIDTH=320;
     public static final int HEIGHT=240;
-    public static final int SCALE=3;
+    public static final int SCALE=1;
     public int ejecucion;
     public long tiempoObjetivo;
     public int FPS;
@@ -76,20 +73,26 @@ public class PanelJuego extends JPanel implements Runnable,KeyListener{
                 try {
                     Thread.sleep(Math.abs(timewait));
                 } catch (InterruptedException ex) {
-                    Logger.getLogger(PanelJuego.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(
+                        PanelJuego.class.getName()).log(Level.SEVERE, 
+                        null, 
+                        ex
+                    );
                 }
                 
             } } catch (IOException ex) {
-            Logger.getLogger(PanelJuego.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(
+                PanelJuego.class.getName()).log(Level.SEVERE, null, ex
+            );
         }
     }
     
-  public  void draw(){
-        sm.draw(g2d);
-  }
-  public  void update(){
-      sm.update();
-  }
+    public  void draw(){
+          sm.draw(g2d);
+    }
+    public  void update(){
+        sm.update();
+    }
   
    public  void drawinPanel(Graphics2D g){
        Graphics2D g2 = (Graphics2D) this.getGraphics();

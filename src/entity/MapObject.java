@@ -4,30 +4,26 @@
  * 
  */
 package entity;
-import TileMap.Tile;
-import TileMap.TileMap;
+import tilemap.Tile;
+import tilemap.TileMap;
 import coffeecity.PanelJuego;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
 
-/**
- *
- * @author 
- */
+
 public abstract class MapObject {
     //TileSet
     protected TileMap tilemap;
     protected int tsize;
-    
-    //Locaización en el mapa
     protected double xmap;
-    protected double ymap;    
+    protected double ymap;
     
-    //Dimensión    
+    
+    //dimension
+    
     protected int width;
     protected int height;
-    
-    //Posición
+    //posicion
     protected double x;
     protected double y;
     protected double dx;
@@ -38,32 +34,41 @@ public abstract class MapObject {
     protected int colActual;
     protected double xdestino;
     protected double ydestino;
-    protected boolean arribaizquierda;
+    protected boolean  arribaizquierda;
     protected boolean arribaderecha;
     protected boolean abajoizquierda;
     protected boolean abajoderecha;
     protected double xaux;
     protected double yaux;
     
-    //Atributes
+    //atributes
     protected double movespeed;
     protected double maxspeed;//aceleracion desplazamiento lateral
     protected double minspeed;//deceleracion desplazamiento lateral
     protected double maxspeedsalto;//aceleracion
     protected double minspeedsalto;//deceleracion
     protected double caidaspeed;//deceleracion
+    protected double maxcaidaspeed;
     
-    //movimiento    
+    //movimiento
+    
     boolean left;
     boolean right;
     boolean up;
     boolean down;
     boolean caida;
     boolean salto;
+    boolean disparando;
     
     //caja colisiones
    int colliderwidth;
    int  colliderheight;
+   
+   // Animacion
+   AnimacionPersonaje animacion;
+   int animacionActual;
+   int animacionPrev;
+   boolean mirarderecha;
     
     public MapObject(TileMap tm){
         this.tilemap=tm;
@@ -71,86 +76,97 @@ public abstract class MapObject {
     }
     
     public Rectangle2D crearRectangulo(){
-        return new Rectangle((int)x-this.colliderwidth,(int)y-this.colliderheight,this.colliderwidth,this.colliderheight);
+        return new Rectangle(
+            (int)x-this.colliderwidth,
+            (int)y-this.colliderheight,
+            this.colliderwidth,
+            this.colliderheight
+        );
     }
     
     public boolean hayColisionRectangulo(MapObject o2){
         Rectangle2D rectpropio=this.crearRectangulo();
-        Rectangle2D rectajeno=this.crearRectangulo();
-        
-        return rectpropio.intersects(rectajeno);
-        
-    }
+        Rectangle2D rectajeno=this.crearRectangulo();        
+        return rectpropio.intersects(rectajeno);        
+    }   
     
-    
-    
-    public void logicaColision(){
-      this.filaActual=(int) (x/this.tsize);
-      this.colActual=(int) (y/this.tsize);
-      this.xdestino=x+dx;
-      this.ydestino=y+dy;
-      this.xaux=x;
-      this.yaux=y;
+        public void logicaColision(){
+        this.filaActual=(int) (y/this.tsize);
+        this.colActual=(int) (x/this.tsize);
+        this.xdestino=x+dx;
+        this.ydestino=y+dy;
+        this.xaux=x;
+        this.yaux=y;
       
-      this.calcularColision(x, this.ydestino);
-      if(dy<0){
-          if(this.arribaizquierda||this.arribaderecha){
-              dy=0;
-              this.yaux=filaActual+this.colliderheight/2;
-          }else{
-              this.yaux=ydestino;
-          }//hacia arriba
-      }if(dy>0){
-           if(this.abajoizquierda||this.abajoderecha){
-              dy=0;
-              this.yaux=filaActual-this.colliderheight/2;
-          }else{
-              this.yaux=ydestino;
-          }
-      }//hacia abajo
+        this.calcularColision(x, this.ydestino);
+        if(dy<0){
+            if(this.arribaizquierda||this.arribaderecha){
+                dy=0;
+                this.yaux=filaActual*tsize+this.colliderheight/2;
+            }else{
+                this.yaux+=dy;
+            }//hacia arriba
+        }if(dy>0){
+             if(this.abajoizquierda||this.abajoderecha){
+                dy=0;
+                caida=false;
+
+            }else{
+                this.yaux+=dy;
+            }
+        }//hacia abajo
       this.calcularColision(this.xdestino, y);
-       if(dx<0){//hacia izq
+       if(dx<=0){//hacia izq
           if(this.arribaizquierda||this.abajoizquierda){
               dx=0;
-              this.xaux=colActual-this.colliderwidth/2;
+              this.xaux=colActual*tsize+this.colliderwidth/2;
           }else{
-              this.xaux=xdestino;
+              this.xaux+=dx;
           }//hacia izquierda
       }if(dx>0){
            if(this.arribaderecha||this.abajoderecha){
+               
               dx=0;
-              this.xaux=colActual+this.colliderwidth/2;
+              this.xaux=((colActual+1)*tsize-this.colliderwidth/2);
           }else{
-              this.xaux=xdestino;
+               this.xaux+=dx;
           }//hacia izquierda
       }
       
       if(this.caida){
           this.calcularColision(x, this.ydestino+1);
-          if((this.abajoizquierda)&&(this.abajoderecha)){
-              this.caida=false;
+          if((!this.abajoizquierda)&&(!this.abajoderecha)){
+              this.caida=true;
           }
       }
         
     }
     
-    public void calcularColision(double x,double y){
+   public void calcularColision(double x,double y){
         int tileizquierdo=((int)x-this.colliderwidth/2)/this.tsize;
-        int tilederecha=((int)x+this.colliderwidth/2)/this.tsize;
-        int tileabajo=((int)y+this.colliderheight/2)/this.tsize;
+        int tilederecha=((int)x+this.colliderwidth/2-1)/this.tsize;
+        int tileabajo=((int)y+this.colliderheight/2-1)/this.tsize;
         int tilearriba=((int)y-this.colliderheight/2)/this.tsize;
         
-        if(tilemap.getTipo(tilearriba, tileizquierdo)==Tile.colision){
+        if(tilemap.getTipo(tilearriba, tileizquierdo)==Tile.COLISION){
             this.arribaizquierda=true;
+        }else{
+            this.arribaizquierda=false;
         }
-        if(tilemap.getTipo(tilearriba, tilederecha)==Tile.colision){
+        if(tilemap.getTipo(tilearriba, tilederecha)==Tile.COLISION){
             this.arribaderecha=true;
+        }else{
+             this.arribaderecha=false;
         }
-        if(tilemap.getTipo(tileabajo, tileizquierdo)==Tile.colision){
+        if(tilemap.getTipo(tileabajo, tileizquierdo)==Tile.COLISION){
             this.abajoizquierda=true;
+        }else{
+            this.abajoizquierda=false;
         }
-        if(tilemap.getTipo(tileabajo, tilederecha)==Tile.colision){
+        if(tilemap.getTipo(tileabajo, tilederecha)==Tile.COLISION){
             this.abajoderecha=true;
+        }else{
+           this.abajoderecha=false;
         }
     }
     
@@ -159,7 +175,7 @@ public abstract class MapObject {
         this.y=y;
     }
     
-    public void setMapPosition(double x,double y){
+    public void setMapPosition(){
       this.xmap=tilemap.getX();
       this.ymap=tilemap.getY();
     }
@@ -448,4 +464,31 @@ public abstract class MapObject {
     public void setColliderheight(int colliderheight) {
         this.colliderheight = colliderheight;
     }
+
+    public boolean isDisparando() {
+        return disparando;
+    }
+
+    public void setDisparando(boolean disparando) {
+        this.disparando = disparando;
+    }
+
+    public AnimacionPersonaje getAnimacion() {
+        return animacion;
+    }
+
+    public void setAnimacion(AnimacionPersonaje animacion) {
+        this.animacion = animacion;
+    }
+
+    public boolean isMirarderecha() {
+        return mirarderecha;
+    }
+
+    public void setMirarderecha(boolean mirarderecha) {
+        this.mirarderecha = mirarderecha;
+    }
+    
+    
+    
 }
