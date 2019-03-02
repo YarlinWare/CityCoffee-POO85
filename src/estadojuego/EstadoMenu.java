@@ -1,7 +1,7 @@
 package estadojuego;
 
-import Archivos.records;
-import TileMap.BackGround;
+import archivos.records;
+import tilemap.BackGround;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -10,9 +10,7 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-//import javafx.scene.layout.Background;
 import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 
 
@@ -33,8 +31,9 @@ public class EstadoMenu extends EstadoJuego{
     @Override
     public void iniciar() {
         try {
-            records.almacena_nombres("records.txt");
-            records.modifica_archivo("records.txt");
+                records.crea_archivo("records.txt");
+                records.almacena_nombres("records.txt");
+                records.modifica_archivo("records.txt");
         } catch (IOException ex) {
             Logger.getLogger(ListRecord.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -107,13 +106,13 @@ public class EstadoMenu extends EstadoJuego{
        int tecla=e.getKeyCode();
        switch(tecla){
            case KeyEvent.VK_UP: {this.opcionactual=this.opcionactual-1;
-                                  if(opcionactual<0){
-                                      opcionactual=this.lopciones.length-1;
-                                  }} break;
+                                    if(opcionactual<0){
+                                        opcionactual=this.lopciones.length-1;
+                                    }} break;
            case KeyEvent.VK_DOWN: {this.opcionactual=this.opcionactual+1;
-                                  if(opcionactual>this.lopciones.length-1){
-                                      opcionactual=0;
-                                  }} break;
+                                    if(opcionactual>this.lopciones.length-1){
+                                        opcionactual=0;
+                                    }} break;
            case KeyEvent.VK_ENTER: {this.seleccionar();} break;
        }
     }

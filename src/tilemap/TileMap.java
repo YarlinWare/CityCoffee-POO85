@@ -1,7 +1,7 @@
 /*
  * clase encargada de nuestro mapa de tiles
  */
-package TileMap;
+package tilemap;
 
 import coffeecity.PanelJuego;
 import java.awt.Graphics2D;

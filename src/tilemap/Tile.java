@@ -3,7 +3,7 @@
  * que zona es traspasable, que zona esta bloqueada, etc.
  * 
  */
-package TileMap;
+package tilemap;
 
 import java.awt.image.BufferedImage;
 
@@ -16,8 +16,8 @@ public class Tile {
     private int type;//si es bloqueo o no
     private int id;//identificador de cada tile
     
-    public static final int normal=0;    
-    public static final int colision=1;
+    public static final int NORMAL=0;    
+    public static final int COLISION=1;
     
     public int[] VectorBlockInt ={
         55,56,57,58,59,60,87,88,89,90,91,408,119,120,121,122,123,440,151,
@@ -65,10 +65,10 @@ public class Tile {
     }
     
     public int asignarTipo(int contador){
-        int result=Tile.normal;
+        int result=Tile.NORMAL;
         for(int c:this.VectorBlockInt){
             if(c==contador){
-                result=Tile.colision;
+                result=Tile.COLISION;
             }
         }
         return result;

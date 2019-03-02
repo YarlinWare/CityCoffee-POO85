@@ -1,4 +1,4 @@
-package TileMap;
+package tilemap;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;

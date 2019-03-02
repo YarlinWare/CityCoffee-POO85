@@ -5,8 +5,8 @@
  */
 package estadojuego;
 
-import TileMap.BackGround;
-import TileMap.TileMap;
+import tilemap.BackGround;
+import tilemap.TileMap;
 import coffeecity.PanelJuego;
 import entity.Player;
 import java.awt.Color;

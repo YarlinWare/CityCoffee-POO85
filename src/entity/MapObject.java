@@ -4,8 +4,8 @@
  * 
  */
 package entity;
-import TileMap.Tile;
-import TileMap.TileMap;
+import tilemap.Tile;
+import tilemap.TileMap;
 import coffeecity.PanelJuego;
 import java.awt.Rectangle;
 import java.awt.geom.Rectangle2D;
@@ -76,46 +76,47 @@ public abstract class MapObject {
     }
     
     public Rectangle2D crearRectangulo(){
-        return new Rectangle((int)x-this.colliderwidth,(int)y-this.colliderheight,this.colliderwidth,this.colliderheight);
+        return new Rectangle(
+            (int)x-this.colliderwidth,
+            (int)y-this.colliderheight,
+            this.colliderwidth,
+            this.colliderheight
+        );
     }
     
     public boolean hayColisionRectangulo(MapObject o2){
         Rectangle2D rectpropio=this.crearRectangulo();
-        Rectangle2D rectajeno=this.crearRectangulo();
-        
-        return rectpropio.intersects(rectajeno);
-        
-    }
+        Rectangle2D rectajeno=this.crearRectangulo();        
+        return rectpropio.intersects(rectajeno);        
+    }   
     
-    
-    
-      public void logicaColision(){
-      this.filaActual=(int) (y/this.tsize);
-      this.colActual=(int) (x/this.tsize);
-      this.xdestino=x+dx;
-      this.ydestino=y+dy;
-      this.xaux=x;
-      this.yaux=y;
+        public void logicaColision(){
+        this.filaActual=(int) (y/this.tsize);
+        this.colActual=(int) (x/this.tsize);
+        this.xdestino=x+dx;
+        this.ydestino=y+dy;
+        this.xaux=x;
+        this.yaux=y;
       
-      this.calcularColision(x, this.ydestino);
-      if(dy<0){
-          if(this.arribaizquierda||this.arribaderecha){
-              dy=0;
-              this.yaux=filaActual*tsize+this.colliderheight/2;
-          }else{
-              this.yaux+=dy;
-          }//hacia arriba
-      }if(dy>0){
-           if(this.abajoizquierda||this.abajoderecha){
-              dy=0;
-              caida=false;
-              
-          }else{
-              this.yaux+=dy;
-          }
-      }//hacia abajo
+        this.calcularColision(x, this.ydestino);
+        if(dy<0){
+            if(this.arribaizquierda||this.arribaderecha){
+                dy=0;
+                this.yaux=filaActual*tsize+this.colliderheight/2;
+            }else{
+                this.yaux+=dy;
+            }//hacia arriba
+        }if(dy>0){
+             if(this.abajoizquierda||this.abajoderecha){
+                dy=0;
+                caida=false;
+
+            }else{
+                this.yaux+=dy;
+            }
+        }//hacia abajo
       this.calcularColision(this.xdestino, y);
-       if(dx<0){//hacia izq
+       if(dx<=0){//hacia izq
           if(this.arribaizquierda||this.abajoizquierda){
               dx=0;
               this.xaux=colActual*tsize+this.colliderwidth/2;

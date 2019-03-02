@@ -5,7 +5,7 @@
  */
 package estadojuego;
 
-import TileMap.BackGround;
+import tilemap.BackGround;
 import coffeecity.PanelJuego;
 import java.awt.Color;
 import java.awt.Font;
@@ -13,7 +13,6 @@ import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.io.*;
 import javax.swing.ImageIcon;
-import Archivos.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
