@@ -48,30 +48,31 @@ public class TileMap {
     int id;
     BufferedImage image;
     
-    
-
     public TileMap(int tcelda) {
         this.tamanio_celda=tcelda;
-        num_filas_pintado=(int)PanelJuego.HEIGHT/tamanio_celda;
-        num_columnas_pintado=(int)(PanelJuego.WIDTH/tamanio_celda)+3;
+        num_filas_pintado=PanelJuego.HEIGHT/tamanio_celda+2;
+        num_columnas_pintado=PanelJuego.WIDTH/tamanio_celda+2;
         tween=0.07;
     }
-    
+        
+         
     public void cargarTiles(String nombre) throws IOException{
         
         BufferedImage tileset= ImageIO.read(this.getClass().getResourceAsStream(nombre));
         this.num_tile_columnas=tileset.getHeight()/tamanio_celda;
-        this.num_tile_filas=tileset.getWidth()/tamanio_celda;
-       
+        this.num_tile_filas=tileset.getWidth()/tamanio_celda;       
         
         tiles = new Tile[num_tile_filas][num_tile_columnas];
         BufferedImage sub_imagen;
         
         int contador=0;
-        for (int i = 0; i < num_tile_filas; i++) {
-            for (int j = 0; j < num_tile_columnas; j++) {
+        for (int i = 0; i < this.num_tile_filas; i++) {
+            for (int j = 0; j < this.num_tile_columnas; j++) {
                 Tile tile;
-                sub_imagen= tileset.getSubimage(j*tamanio_celda, i*tamanio_celda, tamanio_celda, tamanio_celda);
+                sub_imagen= tileset.getSubimage(j*tamanio_celda, 
+                                                i*tamanio_celda, 
+                                                tamanio_celda, 
+                                                tamanio_celda);
                 tile =new Tile(sub_imagen,0,contador);
                 tile.setType(tile.asignarTipo(contador));
                 tiles[i][j]=tile; 
@@ -82,18 +83,17 @@ public class TileMap {
     }
     
     public void cargarMapa(String nombre) throws IOException{
-       InputStream entrada= getClass().getResourceAsStream(nombre);
-       BufferedReader br = new BufferedReader(new InputStreamReader(entrada));
-       
-       num_map_columnas=Integer.parseInt(br.readLine());      
-       num_map_filas=Integer.parseInt(br.readLine());
-       
+        InputStream entrada= getClass().getResourceAsStream(nombre);
+        BufferedReader br = new BufferedReader(new InputStreamReader(entrada));
+
+        num_map_columnas=Integer.parseInt(br.readLine());      
+        num_map_filas=Integer.parseInt(br.readLine());
+
+        map=new int[num_map_filas][num_map_columnas];
        
         ancho = this.num_columnas_pintado*tamanio_celda;
         alto = this.num_filas_pintado * tamanio_celda;
-       
-        map=new int[num_map_filas][num_map_columnas];
-       
+        
         xmin = PanelJuego.WIDTH - ancho;
         xmax = 0;
         ymin = PanelJuego.HEIGHT - alto;

@@ -21,12 +21,8 @@ public class PanelJuego extends JPanel implements Runnable,KeyListener{
     public int FPS;
     ManagerEstados sm;
     
-   
-    
     BufferedImage bi;
     Graphics2D g2d;
-    
-    
 
     public PanelJuego() {
         super();
@@ -43,16 +39,14 @@ public class PanelJuego extends JPanel implements Runnable,KeyListener{
         this.ejecucion=0;
         FPS=60;
         this.tiempoObjetivo= 1000/FPS;
-        sm=new ManagerEstados();
-        
-        
+        sm=new ManagerEstados();        
     }
+    
     public void addNotify(){
         super.addNotify();
         Thread hilo=new Thread(this);
         hilo.start();
-    }
-      
+    }      
     
     @Override
     public void run() {
@@ -90,6 +84,7 @@ public class PanelJuego extends JPanel implements Runnable,KeyListener{
     public  void draw(){
           sm.draw(g2d);
     }
+    
     public  void update(){
         sm.update();
     }

@@ -52,7 +52,7 @@ public class StateLevel_1 extends EstadoJuego{
             java.util.logging.Logger.getLogger(StateLevel_1.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }
-    private URL url = getClass().getResource("/assets/tileset/Level_1.png");
+    private URL url = getClass().getResource("/assets/tileset/Level_4.png");
     
     @Override
     public void draw(Graphics2D g2d) {        
