@@ -65,11 +65,6 @@ public class StateLevel_1 extends EstadoJuego{
     
     @Override
     public void update() {
-       //tilemap.setPosicion(PanelJuego.WIDTH / 2 - player.getX(),PanelJuego.HEIGHT / 2 - player.getY());
-       /*tilemap.setPosicion(
-            ((PanelJuego.WIDTH / 2) - player.getX()),
-            ((PanelJuego.HEIGHT / 2) - player.getY())
-        );*/
         tilemap.setPosicion(
             (PanelJuego.WIDTH / 2) - player.getX(),
             (PanelJuego.HEIGHT / 2) - player.getY()

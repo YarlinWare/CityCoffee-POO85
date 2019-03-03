@@ -8,3 +8,5 @@ Helena
 999999
 Violeta
 999999
+New Player
+999999

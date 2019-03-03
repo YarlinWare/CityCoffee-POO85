@@ -50,8 +50,8 @@ public class TileMap {
     
     public TileMap(int tcelda) {
         this.tamanio_celda=tcelda;
-        num_filas_pintado=PanelJuego.HEIGHT/tamanio_celda+2;
-        num_columnas_pintado=PanelJuego.WIDTH/tamanio_celda+2;
+        num_filas_pintado=PanelJuego.HEIGHT/tamanio_celda+100;
+        num_columnas_pintado=PanelJuego.WIDTH/tamanio_celda+100;
         tween=0.07;
     }
         
@@ -113,12 +113,11 @@ public class TileMap {
         int valor = map[x][y];
         int ffila = valor / this.num_tile_columnas;
         int fcol = valor % this.num_tile_columnas;  
-        return tiles[ffila][fcol].getType();/*
         if(fcol>=0){
             return tiles[ffila][fcol].getType(); 
          }else{
              return 0;
-         }       */ 
+         }       
     }
     
     public double getTween() {
@@ -159,15 +158,7 @@ public class TileMap {
                 int valor=map[fila][col];
                 int fila_fila=valor/num_tile_filas;
                 int fila_col=valor%num_tile_columnas-1; 
-                
-                /*
-                g2d.drawImage(
-                    tiles[fila_fila][fila_col].getImage(),
-                    (int)(this.x+col)*tamanio_celda , 
-                    (int)(this.y+fila)*tamanio_celda ,
-                    null 
-                );*/
-                
+                  
                 if(fila_col>=0){
                     g2d.drawImage(
                         tiles[fila_fila][fila_col].getImage(),
