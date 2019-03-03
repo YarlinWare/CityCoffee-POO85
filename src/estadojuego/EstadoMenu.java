@@ -24,7 +24,7 @@ public class EstadoMenu extends EstadoJuego{
        this.ms=ms;
        bg=new BackGround("/assets/background/Fondo.gif",1.0);
        bg.setPosition(0, 0);
-       bg.setVector(0, 0.08);
+       bg.setVector(0, 0);
        this.iniciar();
     }
 

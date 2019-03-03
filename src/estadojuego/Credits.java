@@ -91,7 +91,7 @@ public class Credits extends EstadoJuego {
     
     public void seleccionar(){
         if(this.opcionactual==0){
-            this.ms.setEstadoactual(ms.MENU);
+            this.ms.setEstadoactual(0);
             System.out.println("Menu");
         }        
         if(this.opcionactual==1){

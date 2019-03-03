@@ -50,8 +50,8 @@ public class TileMap {
     
     public TileMap(int tcelda) {
         this.tamanio_celda=tcelda;
-        num_filas_pintado=PanelJuego.HEIGHT/tamanio_celda+100;
-        num_columnas_pintado=PanelJuego.WIDTH/tamanio_celda+100;
+        num_filas_pintado=PanelJuego.HEIGHT/tamanio_celda+50;
+        num_columnas_pintado=PanelJuego.WIDTH/tamanio_celda+50;
         tween=0.07;
     }
         

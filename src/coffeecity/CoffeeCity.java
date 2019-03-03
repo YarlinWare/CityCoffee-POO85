@@ -3,7 +3,7 @@ package coffeecity;
 import estadojuego.StateLevel_1;
 import javax.swing.JFrame;
 
-public class CoffeeCyty {
+public class CoffeeCity {
 
     /**
      * @param args the command line arguments

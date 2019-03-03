@@ -21,6 +21,7 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import java.applet.AudioClip;
+import javax.swing.*;
 /**
  *
  * @author Rapter
@@ -28,6 +29,7 @@ import java.applet.AudioClip;
 public class StateLevel_1 extends EstadoJuego{
     private TileMap tilemap;
     private Player player;
+    private int vidas = 3;
     
     public static String nombre_jugador;
     BackGround bg;
@@ -56,8 +58,7 @@ public class StateLevel_1 extends EstadoJuego{
     
     @Override
     public void draw(Graphics2D g2d) {        
-        //g2d.setColor(Color.decode("#707cc2"));
-        g2d.setColor(Color.decode("#0087b6"));
+        g2d.setColor(Color.decode("#000000"));
         g2d.fillRect(0, 0, PanelJuego.WIDTH, PanelJuego.HEIGHT);
         player.draw(g2d);
         tilemap.draw(g2d);         
@@ -70,6 +71,8 @@ public class StateLevel_1 extends EstadoJuego{
             (PanelJuego.HEIGHT / 2) - player.getY()
         );
         player.update();
+        this.game_over();
+        this.level_finished();
         System.out.println("tamaño ventana" +PanelJuego.WIDTH / 2 +" Posicion heroe x" +player.getX());
         System.out.println("tamaño ventana" +PanelJuego.HEIGHT / 2 +" Posicion heroe y" +player.getY());
 
@@ -81,6 +84,41 @@ public class StateLevel_1 extends EstadoJuego{
             "Escribe tu nombre jugador",
             "New Player"
         );
+    }
+    public void game_over()
+    {
+        if(player.getY()>270)
+        {
+            System.out.println("GAME OVER");
+            vidas=vidas-1;
+            
+            if(vidas<1)
+            {
+                JOptionPane.showMessageDialog(new JFrame(), "Se acabaron todas las vidas.", "¡Oh no!", JOptionPane.INFORMATION_MESSAGE);
+                this.ms.setEstadoactual(0);
+                vidas=3;
+                player.setX(5);
+                player.setY(260);
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(new JFrame(), "Acabas de caer al vacio, te quedan "+vidas+" vidas.", "¡Oh No!", JOptionPane.INFORMATION_MESSAGE);
+                player.setX(5);
+                player.setY(260);
+            }
+            
+        }
+            
+    }
+    public void level_finished()
+    {
+        if(player.getX()>1890)
+        {
+            System.out.println("NIVEL COMPLETADO");
+            player.setX(5);
+            this.ms.setEstadoactual(0);            
+            JOptionPane.showMessageDialog(new JFrame(), "Has terminado exitosamente el nivel 1, el nivel 2 está en construcción.", "¡Felicitaciones!", JOptionPane.INFORMATION_MESSAGE);       
+        }
     }
 
     @Override
@@ -95,7 +133,6 @@ public class StateLevel_1 extends EstadoJuego{
            case KeyEvent.VK_RIGHT:{player.setRight(true);}break;
            case KeyEvent.VK_LEFT:{player.setLeft(true);}break;
            case KeyEvent.VK_SPACE:{player.setSalto(true);}break;
-           //case KeyEvent.VK_F:{player.setAtacando(true);}break;
         }
     }
 
@@ -106,7 +143,6 @@ public class StateLevel_1 extends EstadoJuego{
            case KeyEvent.VK_RIGHT:{player.setRight(false);}break;
            case KeyEvent.VK_LEFT:{player.setLeft(false);}break;
            case KeyEvent.VK_SPACE:{player.setSalto(false);}break;
-           //case KeyEvent.VK_F:{player.setAtacando(false);}break;
         }
     }
     

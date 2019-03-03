@@ -53,7 +53,7 @@ public class Player extends MapObject {
                     
         BufferedImage spritesheet = ImageIO.read(
                                     getClass().getResourceAsStream(""
-                                    + "/assets/character/enemy1.png")
+                                    + "/assets/character/hero1.png")
                                     );
         
         sprites = new ArrayList<BufferedImage[]>();
@@ -120,7 +120,7 @@ public class Player extends MapObject {
     }
 
     public void update() {
-        // update position
+        // Actualizar posicion
         getNextPosition();
         this.logicaColision();
         setPosition(xaux, yaux);
