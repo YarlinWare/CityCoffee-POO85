@@ -45,7 +45,7 @@ public class StateLevel_1 extends EstadoJuego{
             //sonido = java.applet.Applet.newAudioClip(getClass().getResource("/assets/sounds/1.wav"));      
             tilemap=new TileMap(32); 
             tilemap.cargarTiles("/assets/tileset/prueba.png");
-            tilemap.cargarMapa("/assets/maps/level_4.txt");
+            tilemap.cargarMapa("/assets/maps/level_4_1.txt");
             player = new Player(tilemap);
             player.setPosition(0, 0);
         } catch (IOException ex) {
