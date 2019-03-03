@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package estadojuego;
 
 import tilemap.BackGround;
@@ -22,10 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import java.applet.AudioClip;
 import javax.swing.*;
-/**
- *
- * @author Rapter
- */
+
 public class StateLevel_1 extends EstadoJuego{
     private TileMap tilemap;
     private Player player;
@@ -71,6 +63,7 @@ public class StateLevel_1 extends EstadoJuego{
             (PanelJuego.HEIGHT / 2) - player.getY()
         );
         player.update();
+        this.limite_inferior();
         this.game_over();
         this.level_finished();
         System.out.println("tamaño ventana" +PanelJuego.WIDTH / 2 +" Posicion heroe x" +player.getX());
@@ -120,6 +113,11 @@ public class StateLevel_1 extends EstadoJuego{
             JOptionPane.showMessageDialog(new JFrame(), "Has terminado exitosamente el nivel 1, el nivel 2 está en construcción.", "¡Felicitaciones!", JOptionPane.INFORMATION_MESSAGE);       
         }
     }
+    public void limite_inferior()
+    {
+        if(player.getX()<0)
+            player.setX(0);
+    }
 
     @Override
     public void keyTyped(KeyEvent ke) {
@@ -132,7 +130,7 @@ public class StateLevel_1 extends EstadoJuego{
         switch(keycode){
            case KeyEvent.VK_RIGHT:{player.setRight(true);}break;
            case KeyEvent.VK_LEFT:{player.setLeft(true);}break;
-           case KeyEvent.VK_SPACE:{player.setSalto(true);}break;
+           case KeyEvent.VK_UP:{player.setSalto(true);}break;
         }
     }
 
@@ -142,7 +140,7 @@ public class StateLevel_1 extends EstadoJuego{
         switch(keycode){
            case KeyEvent.VK_RIGHT:{player.setRight(false);}break;
            case KeyEvent.VK_LEFT:{player.setLeft(false);}break;
-           case KeyEvent.VK_SPACE:{player.setSalto(false);}break;
+           case KeyEvent.VK_UP:{player.setSalto(false);}break;
         }
     }
     
