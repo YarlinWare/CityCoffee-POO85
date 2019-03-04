@@ -40,4 +40,5 @@ Proyecto final de Programación Orientada a Objetos [G85], de la Universidad Dis
 #### Algunas herramientas utilizadas:
 - www.piskelapp.com
 - gaurav.munjal.us/Universal-LPC-Spritesheet-Character-Generator/
+- Música: Converter by Mega Drive
 
