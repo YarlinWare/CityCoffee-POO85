@@ -36,9 +36,7 @@ public class StateLevel_1 extends EstadoJuego{
     
     @Override
     public void iniciar() {    
-        try { 
-            //AudioClip sonido;
-            //sonido = java.applet.Applet.newAudioClip(getClass().getResource("/assets/sounds/1.wav"));      
+        try {
             tilemap=new TileMap(32); 
             tilemap.cargarTiles("/assets/tileset/prueba.png");
             tilemap.cargarMapa("/assets/maps/level_4_1.txt");
@@ -52,7 +50,7 @@ public class StateLevel_1 extends EstadoJuego{
     
     @Override
     public void draw(Graphics2D g2d) {        
-        g2d.setColor(Color.decode("#000000"));
+        g2d.setColor(Color.decode("#004256"));
         g2d.fillRect(0, 0, PanelJuego.WIDTH, PanelJuego.HEIGHT);
         player.draw(g2d);
         tilemap.draw(g2d);         
