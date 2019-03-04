@@ -103,7 +103,9 @@ public class StateLevel_1 extends EstadoJuego{
             {
                 JOptionPane.showMessageDialog(new JFrame(), "Acabas de caer al vacio, te quedan "+vidas+" vidas.", "¡Oh No!", JOptionPane.INFORMATION_MESSAGE);
                 player.setX(5);
-                player.setY(260);
+                player.setY(240);
+                player.setMirarderecha(true);
+                player.setRight(false);
             }
             
         }
