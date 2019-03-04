@@ -1,7 +1,14 @@
 package coffeecity;
 
 import estadojuego.StateLevel_1;
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import static java.lang.System.in;
 import javax.swing.JFrame;
+import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.player.Player;
 
 
 public class CoffeeCity {
