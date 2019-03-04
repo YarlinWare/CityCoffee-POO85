@@ -33,7 +33,6 @@ public class EstadoMenu extends EstadoJuego{
         try {
                 records.crea_archivo("records.txt");
                 records.almacena_nombres("records.txt");
-                records.modifica_archivo("records.txt");
         } catch (IOException ex) {
             Logger.getLogger(ListRecord.class.getName()).log(Level.SEVERE, null, ex);
         }

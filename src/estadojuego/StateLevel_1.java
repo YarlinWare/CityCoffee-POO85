@@ -1,5 +1,6 @@
 package estadojuego;
 
+import archivos.records;
 import tilemap.BackGround;
 import tilemap.TileMap;
 import coffeecity.PanelJuego;
@@ -22,6 +23,7 @@ public class StateLevel_1 extends EstadoJuego{
     private TileMap tilemap;
     private Player player;
     private int vidas = 3;
+    public static int contador = 0;
     
     public static String nombre_jugador;
     BackGround bg;
@@ -66,8 +68,7 @@ public class StateLevel_1 extends EstadoJuego{
         this.limite_inferior();
         this.game_over();
         this.level_finished();
-        System.out.println("tamaño ventana" +PanelJuego.WIDTH / 2 +" Posicion heroe x" +player.getX());
-        System.out.println("tamaño ventana" +PanelJuego.HEIGHT / 2 +" Posicion heroe y" +player.getY());
+        contador++;
 
     }
     
@@ -87,6 +88,11 @@ public class StateLevel_1 extends EstadoJuego{
             
             if(vidas<1)
             {
+                try {
+                    records.modifica_archivo("records.txt");
+                } catch (IOException ex) {
+                    Logger.getLogger(StateLevel_1.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 JOptionPane.showMessageDialog(new JFrame(), "Se acabaron todas las vidas.", "¡Oh no!", JOptionPane.INFORMATION_MESSAGE);
                 this.ms.setEstadoactual(0);
                 vidas=3;
@@ -107,6 +113,11 @@ public class StateLevel_1 extends EstadoJuego{
     {
         if(player.getX()>1890)
         {
+            try {
+                records.modifica_archivo("records.txt");
+            } catch (IOException ex) {
+                Logger.getLogger(StateLevel_1.class.getName()).log(Level.SEVERE, null, ex);
+            }
             System.out.println("NIVEL COMPLETADO");
             player.setX(5);
             this.ms.setEstadoactual(0);            

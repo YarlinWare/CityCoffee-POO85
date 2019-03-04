@@ -11,7 +11,7 @@ public class records {
 
      public static BufferedWriter buff = null;
      public static String nombre_jugador= StateLevel_1.nombre_jugador;
-     public static int score = 999999;
+     //public static int score = 999999;
      public static ArrayList<String> nombres = new ArrayList<String>();
      
      public static void crea_archivo(String path) throws IOException
@@ -36,7 +36,7 @@ public class records {
                 else
                 {
                     buff.write(nombre_jugador+"\n");
-                    buff.write(score+"\n");
+                    buff.write(StateLevel_1.contador+"\n");
                     System.out.println("Nombre Añadido y puntaje añadido");
                 }
 
