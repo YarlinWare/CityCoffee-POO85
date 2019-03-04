@@ -108,7 +108,7 @@ public abstract class MapObject {
             }//hacia arriba
         }if(dy>0){
              if(this.abajoizquierda||this.abajoderecha){
-                dy=0;
+                dy=3;
                 caida=false;
 
             }else{
