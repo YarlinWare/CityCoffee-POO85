@@ -18,7 +18,7 @@ public class CoffeeCity {
             FileInputStream fis;
             Player player;
             fis = new FileInputStream(
-                    "/home/rapterpakfa/NetBeansProjects/CityCoffee-POO85/src/assets/sounds/MegaDriveConverter.mp3");
+                    "/home/felipe/Desktop/CityCoffee-POO85/src/assets/sounds/Audio.mp3");
             BufferedInputStream bis = new BufferedInputStream(fis);
 
             player = new Player(bis); // Llamada a constructor de la clase Player

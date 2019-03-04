@@ -17,7 +17,11 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import java.applet.AudioClip;
+import java.io.BufferedInputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import javax.swing.*;
+import javazoom.jl.decoder.JavaLayerException;
 
 public class StateLevel_1 extends EstadoJuego{
     private TileMap tilemap;
@@ -70,6 +74,7 @@ public class StateLevel_1 extends EstadoJuego{
 
     }
     
+    
     public static void pedir_nombre()
     {
         nombre_jugador= JOptionPane.showInputDialog(
@@ -120,8 +125,8 @@ public class StateLevel_1 extends EstadoJuego{
             }
             System.out.println("NIVEL COMPLETADO");
             player.setX(5);
-            this.ms.setEstadoactual(0);            
-            JOptionPane.showMessageDialog(new JFrame(), "Has terminado exitosamente el nivel 1, el nivel 2 está en construcción.", "¡Felicitaciones!", JOptionPane.INFORMATION_MESSAGE);       
+            this.ms.setEstadoactual(2);            
+            JOptionPane.showMessageDialog(new JFrame(), "Has terminado exitosamente el nivel 1. ¡Vamos con el nivel 2!.", "¡Felicitaciones!", JOptionPane.INFORMATION_MESSAGE);       
         }
     }
     public void limite_inferior()
@@ -139,9 +144,16 @@ public class StateLevel_1 extends EstadoJuego{
     public void keyPressed(KeyEvent ke) {
         int keycode=ke.getKeyCode();
         switch(keycode){
-           case KeyEvent.VK_RIGHT:{player.setRight(true);}break;
-           case KeyEvent.VK_LEFT:{player.setLeft(true);}break;
-           case KeyEvent.VK_UP:{player.setSalto(true);}break;
+           case KeyEvent.VK_RIGHT:{
+               player.setRight(true);
+           }break;
+           case KeyEvent.VK_LEFT:{
+               player.setLeft(true);
+           }break;
+           case KeyEvent.VK_UP:{
+           
+               player.setSalto(true);
+           }break;
         }
     }
 

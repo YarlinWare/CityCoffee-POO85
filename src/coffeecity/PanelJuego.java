@@ -91,7 +91,7 @@ public class PanelJuego extends JPanel implements Runnable,KeyListener{
   
    public  void drawinPanel(Graphics2D g){
        Graphics2D g2 = (Graphics2D) this.getGraphics();
-       System.out.println(SCALE);
+       //System.out.println(SCALE);
        g2.drawImage(bi, 0, 0, this.WIDTH*SCALE, this.HEIGHT*SCALE, null);
        g2.dispose();
    } 

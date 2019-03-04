@@ -19,8 +19,9 @@ public class ManagerEstados {
     int estadoactual;
     public final int MENU=0;
     public final int LEVEL1=1; 
-    public final int RECORD=2;  
-    public final int CREDITS=3; 
+    public final int LEVEL2=2;
+    public final int RECORD=3;    
+    public final int CREDITS=4; 
 
     public ManagerEstados() throws IOException {
         this.estadosJuego=new ArrayList<EstadoJuego>();
@@ -29,6 +30,8 @@ public class ManagerEstados {
         this.estadosJuego.add(menu);
         StateLevel_1 level1=new StateLevel_1(this);
         this.estadosJuego.add(level1);
+        StateLevel_2 level2=new StateLevel_2(this);
+        this.estadosJuego.add(level2);
         ListRecord record=new ListRecord(this);
         this.estadosJuego.add(record);
         Credits creditos=new Credits(this);
